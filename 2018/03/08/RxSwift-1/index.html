@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Tpphha">
 <meta property="og:description" content="基础概念 The equivalence of observer pattern (Observable&amp;lt;Element&amp;gt; sequence) and normal sequences (Sequence) is the most important thing to understand about Rx. Every Observable sequence is just a se">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-14T03:26:42.410Z">
+<meta property="og:updated_time" content="2018-04-15T03:56:32.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxSwift &lt;一&gt;">
 <meta name="twitter:description" content="基础概念 The equivalence of observer pattern (Observable&amp;lt;Element&amp;gt; sequence) and normal sequences (Sequence) is the most important thing to understand about Rx. Every Observable sequence is just a se">
@@ -331,11 +331,19 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">let sequence = Observable&lt;String&gt;.create(&#123; (observer) -&gt; Disposable in</span><br><span class="line">        observer.on(.next(&quot;hello world!&quot;))</span><br><span class="line">        observer.on(.completed)</span><br><span class="line">        </span><br><span class="line">        return Disposables.create()</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    // 方案1</span><br><span class="line">    sequence.subscribe(&#123; (event) in</span><br><span class="line">        print(event)</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    // 方案2</span><br><span class="line">    let observer = AnyObserver&lt;String&gt;.init(eventHandler: &#123; (event) in</span><br><span class="line">        print(event)</span><br><span class="line">    &#125;)</span><br><span class="line">    sequence.subscribe(observer)</span><br></pre></td></tr></table></figure>
 <p>上面两个方案是等价的，因为方案1传入的闭包最终会封装成为一个 Observer。并且只要调用 Observable 的 subscribe 方法，最终都会回到方案2的方式，这就对应了 ObservableType protocol。</p>
 <p>当然这里 Observable 的 create 方法传入的闭包中的 observer 并不是我们调用 subscribe 方法传入的 observer。RxSwift 具体实现中，会对我们传入的 observer 再进行一些封装，一般是由 Sink 的子类作为容器。这样就能方便对传入的 event 进行一些处理及操作。</p>
-<h1 id="数据流动"><a href="#数据流动" class="headerlink" title="数据流动"></a>数据流动</h1><p>我们调用 Observable 的 subscribe 方法，就打开了数据的闸门，数据就自顶向下开始流动，中间我们可以调用例如 map、flatMap、concat 等操作符来处理数据。</p>
+<h1 id="数据（Event）流动"><a href="#数据（Event）流动" class="headerlink" title="数据（Event）流动"></a>数据（Event）流动</h1><p>我们调用 Observable 的 subscribe 方法，就打开了数据的闸门，数据就自顶向下开始流动，中间我们可以调用例如 map、flatMap、concat 等操作符来处理数据。</p>
 <p>这个有点像军训的时候我们报数，我们从一端开始报数，直到末端才算完成。而在 RxSwift 我们调用 subscribe 方法报数，直到最顶上。当到达了最顶上，数据开始生成，又从最顶上通过各种操作符，依次向下传递，直到末端。</p>
 <p>所以我们看到，数据流动是需要依赖中间每个“人”的配合才行的，如果中间某个“人”使坏，把数据给吞掉，不再向下传递，那么最终 observer 就不会收到数据。因此在 RxSwift 中，每个操作符都是被精心设计的。</p>
-<p>因此整个数据流动的流程是：</p>
-<p>底部发出启动 -&gt; 向顶部传递启动命令 -&gt; 顶部收到启动命令 -&gt; 生成数据 -&gt; 自顶向下传递（包括可能的数据处理）数据 -&gt; 底部接收数据</p>
+<p>整个数据流动的流程：</p>
+<ol>
+<li>底部发出启动 </li>
+<li>向顶部传递启动命令 </li>
+<li>顶部收到启动命令 </li>
+<li>生成 event</li>
+<li>自顶向下传递（包括可能的 event 处理）event</li>
+<li>底部接收 event</li>
+</ol>
+<p>特别需要说明的是第5步，一个 event 并不总是从最顶部的 Observabel 生成。例如使用了 flatMap 操作符，那么 event 可能是直接从 flatMap 方法返回的 Observabel 生成的，但是第一个 event 必定是从最顶部生成。</p>
 
       
     </div>
@@ -482,7 +490,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础概念"><span class="nav-number">1.</span> <span class="nav-text">基础概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码分析"><span class="nav-number">2.</span> <span class="nav-text">源码分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据流动"><span class="nav-number">3.</span> <span class="nav-text">数据流动</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础概念"><span class="nav-number">1.</span> <span class="nav-text">基础概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码分析"><span class="nav-number">2.</span> <span class="nav-text">源码分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据（Event）流动"><span class="nav-number">3.</span> <span class="nav-text">数据（Event）流动</span></a></li></ol></div>
             
 
           </div>

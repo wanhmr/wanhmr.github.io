@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Tpphha">
 <meta property="og:description" content="基础概念 The equivalence of observer pattern (Observable&amp;lt;Element&amp;gt; sequence) and normal sequences (Sequence) is the most important thing to understand about Rx. Every Observable sequence is just a se">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-15T08:30:21.125Z">
+<meta property="og:updated_time" content="2018-04-15T12:31:58.526Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxSwift（1）">
 <meta name="twitter:description" content="基础概念 The equivalence of observer pattern (Observable&amp;lt;Element&amp;gt; sequence) and normal sequences (Sequence) is the most important thing to understand about Rx. Every Observable sequence is just a se">
@@ -343,7 +343,7 @@
 <p>上面两个方案是等价的，因为方案1传入的闭包最终会封装成为一个 Observer。并且只要调用 Observable 的 subscribe 方法，最终都会回到方案2的方式，这就对应了 ObservableType protocol。</p>
 <p>当然这里 Observable 的 create 方法传入的闭包中的 observer 并不是我们调用 subscribe 方法传入的 observer。RxSwift 具体实现中，会对我们传入的 observer 再进行一些封装，一般是由 Sink 的子类作为容器。这样就能方便对传入的 event 进行一些处理及操作。</p>
 <h1 id="数据（Event）流动"><a href="#数据（Event）流动" class="headerlink" title="数据（Event）流动"></a>数据（Event）流动</h1><p>我们调用 Observable 的 subscribe 方法，就打开了数据的闸门，数据就自顶向下开始流动，中间我们可以调用例如 map、flatMap、concat 等操作符来处理数据。</p>
-<p>这个有点像军训的时候我们报数，我们从一端开始报数，直到末端才算完成。而在 RxSwift 我们调用 subscribe 方法报数，直到最顶上。当到达了最顶上，数据开始生成，又从最顶上通过各种操作符，依次向下传递，直到末端。</p>
+<p>这个有点像军训的时候我们报数，我们从一端开始报数，直到末端才算完成。而在 RxSwift 我们调用 subscribe 方法报数，直到最顶上。当到达了最顶上，数据开始生成（仅针对于 Cold Observabels，Hot Observabels 并不是如此，具体请参考 <a href="https://github.com/ReactiveX/RxSwift/blob/master/Documentation/HotAndColdObservables.md" target="_blank" rel="noopener">Hot and Cold Observables</a>），又从最顶上通过各种操作符，依次向下传递，直到末端。</p>
 <p>所以我们看到，数据流动是需要依赖中间每个“人”的配合才行的，如果中间某个“人”使坏，把数据给吞掉，不再向下传递，那么最终 observer 就不会收到数据。因此在 RxSwift 中，每个操作符都是被精心设计的。</p>
 <p>整个数据流动的流程：</p>
 <ol>

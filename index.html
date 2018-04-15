@@ -319,9 +319,9 @@
 <li><code>Observer (callback)</code> needs to be passed to <code>ObservableType.subscribe</code> method to receive sequence elements instead of calling <code>next()</code> on the returned iterator.</li>
 </ul>
 </blockquote>
-<p>这是 RxSwift 文档最开始的部分，我们可以看到，<code>Observable</code> 是和 <code>Sequence</code> 等同的，<code>Observable</code> 是元素流动开始的地方。<code>ObservableType.subscribe</code> 类似于 <code>Sequence.makeIterator</code> 方法。向 <code>ObservableType.subscribe</code> 传递的参数是 <code>Observer</code>，用来接收 <code>Observable</code> 产生的元素。</p>
-<p>从字面意思来说，就是 <code>Observer</code> 订阅了 <code>Observale</code>，而事实也确实如此。<code>Observable</code> 产生序列元素，通过 <code>ObservableType.subscribe</code> 将序列元素产生的过程通知给 <code>Observer</code> 。 调用 <code>ObservableType.subscribe</code> 会返回一个 <code>Disposable</code> 对象，用来随时取消订阅（<code>subscription</code>）。</p>
-<p>在 Rx 中，一个 sequences 可以由 0 个或多个元素，一旦 error 或者 completed 时间发生，这个 sequences 就不能在处理任何其他的元素。</p>
+<p>这是 RxSwift 文档最开始的部分，我们可以看到，<code>Observable</code> 和 <code>Sequence</code> 等同。<code>ObservableType.subscribe</code> 类似于 <code>Sequence.makeIterator</code> 方法。向 <code>ObservableType.subscribe</code> 传递的参数是 <code>Observer</code>，用来接收 <code>Observable</code> 产生的 event。</p>
+<p>从字面意思来说，就是 <code>Observer</code> 订阅了 <code>Observale</code>，而事实也确实如此。<code>Observable</code> 产生序列 event，通过 <code>ObservableType.subscribe</code> 将序列event产生通知 <code>Observer</code> 。 调用 <code>ObservableType.subscribe</code> 会返回一个 <code>Disposable</code> 对象，用来随时取消订阅（<code>subscription</code>）。</p>
+<p>在 Rx 中，一个 sequences 可以由 0 个或多个 event，一旦 error 或者 completed 时间发生，这个 sequences 就不能再生成新的 event。</p>
 <p>这是 RxSwift 中定义的一些基本接口：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">enum Event&lt;Element&gt;  &#123;</span><br><span class="line">    case next(Element)      // next element of a sequence</span><br><span class="line">    case error(Swift.Error) // sequence failed with error</span><br><span class="line">    case completed          // sequence terminated successfully</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public protocol ObservableType : ObservableConvertibleType &#123;</span><br><span class="line">    func subscribe&lt;O: ObserverType&gt;(_ observer: O) -&gt; Disposable where O.E == E</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">protocol ObserverType &#123;</span><br><span class="line">    func on(_ event: Event&lt;Element&gt;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><p>在 RxSwift 中，<code>Observable</code> 是遵守 <code>ObservableType</code> 协议的一个具体 Class。</p>
@@ -344,7 +344,10 @@
 <li>自顶向下传递（包括可能的 event 处理）event</li>
 <li>底部接收 event</li>
 </ol>
-<p>特别需要说明的是第5步，一个 event 并不总是从最顶部的 Observabel 生成。例如使用了 flatMap 操作符，那么 event 可能是直接从 flatMap 方法返回的 Observabel 生成的，但是第一个 event 必定是从最顶部生成。</p>
+<p>需要特别说明的是第5步，一个 event 并不总是从最顶部的 Observabel 生成。例如使用了 flatMap 操作符，那么 event 可能是直接从 flatMap 方法返回的 Observabel 生成的，但是第一个 event 必定是从最顶部生成。下面是一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">let disposeBag = DisposeBag()</span><br><span class="line">    </span><br><span class="line">    struct Player &#123;</span><br><span class="line">        var score: Variable&lt;Int&gt;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    let 👦🏻 = Player(score: Variable(80))</span><br><span class="line">    let 👧🏼 = Player(score: Variable(90))</span><br><span class="line">    </span><br><span class="line">    let player = Variable(👦🏻)</span><br><span class="line">    </span><br><span class="line">    // 注意 flatMap 方法</span><br><span class="line">    player.asObservable()</span><br><span class="line">        .flatMap &#123; $0.score.asObservable() &#125; // Change flatMap to flatMapLatest and observe change in printed output</span><br><span class="line">        .subscribe(onNext: &#123; print($0) &#125;)</span><br><span class="line">        .disposed(by: disposeBag)</span><br><span class="line">    </span><br><span class="line">    👦🏻.score.value = 85</span><br><span class="line">    </span><br><span class="line">    player.value = 👧🏼</span><br><span class="line">    </span><br><span class="line">    👦🏻.score.value = 95 // Will be printed when using flatMap, but will not be printed when using flatMapLatest</span><br><span class="line">    </span><br><span class="line">    👧🏼.score.value = 100</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">80</span><br><span class="line">85</span><br><span class="line">90</span><br><span class="line">95</span><br><span class="line">100</span><br></pre></td></tr></table></figure>
 
           
         
@@ -758,6 +761,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>

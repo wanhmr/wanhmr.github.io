@@ -340,6 +340,209 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/RxSwift-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tpphha">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tpphha">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/03/08/RxSwift-1/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">RxSwift（1）</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-03-08 20:30:00" itemprop="dateCreated datePublished" datetime="2018-03-08T20:30:00+08:00">2018-03-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-18 22:49:44" itemprop="dateModified" datetime="2018-11-18T22:49:44+08:00">2018-11-18</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/08/RxSwift-1/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/08/RxSwift-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><blockquote>
+<p>The equivalence of observer pattern (<code>Observable&lt;Element&gt;</code> sequence) and normal sequences (<code>Sequence</code>) is the most important thing to understand about Rx.</p>
+<p><strong>Every <code>Observable</code> sequence is just a sequence. The key advantage for an <code>Observable</code> vs Swift’s <code>Sequence</code> is that it can also receive elements asynchronously. This is the kernel of the RxSwift, documentation from here is about ways that we expand on that idea.</strong></p>
+<ul>
+<li><code>Observable</code>(<code>ObservableType</code>) is equivalent to <code>Sequence</code></li>
+<li><code>ObservableType.subscribe</code> method is equivalent to <code>Sequence.makeIterator</code> method.</li>
+<li><code>Observer (callback)</code> needs to be passed to <code>ObservableType.subscribe</code> method to receive sequence elements instead of calling <code>next()</code> on the returned iterator.</li>
+</ul>
+</blockquote>
+<p>这是 RxSwift 文档最开始的部分，我们可以看到，<code>Observable</code> 和 <code>Sequence</code> 等同。<code>ObservableType.subscribe</code> 类似于 <code>Sequence.makeIterator</code> 方法。向 <code>ObservableType.subscribe</code> 传递的参数是 <code>Observer</code>，用来接收 <code>Observable</code> 产生的 event。</p>
+<p>从字面意思来说，就是 <code>Observer</code> 订阅了 <code>Observale</code>，而事实也确实如此。<code>Observable</code> 产生序列 event，通过 <code>ObservableType.subscribe</code> 将序列event产生通知 <code>Observer</code> 。 调用 <code>ObservableType.subscribe</code> 会返回一个 <code>Disposable</code> 对象，用来随时取消订阅（<code>subscription</code>）。</p>
+<p>在 Rx 中，一个 sequences 可以由 0 个或多个 event，一旦 error 或者 completed 时间发生，这个 sequences 就不能再生成新的 event。</p>
+<p>这是 RxSwift 中定义的一些基本接口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">enum Event&lt;Element&gt;  &#123;</span><br><span class="line">    case next(Element)      // next element of a sequence</span><br><span class="line">    case error(Swift.Error) // sequence failed with error</span><br><span class="line">    case completed          // sequence terminated successfully</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public protocol ObservableType : ObservableConvertibleType &#123;</span><br><span class="line">    func subscribe&lt;O: ObserverType&gt;(_ observer: O) -&gt; Disposable where O.E == E</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">protocol ObserverType &#123;</span><br><span class="line">    func on(_ event: Event&lt;Element&gt;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><p>在 RxSwift 中，<code>Observable</code> 是遵守 <code>ObservableType</code> 协议的一个具体 Class。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">extension ObservableType &#123;</span><br><span class="line">    public static func create(_ subscribe: @escaping (AnyObserver&lt;E&gt;) -&gt; Disposable) -&gt; Observable&lt;E&gt; &#123;</span><br><span class="line">        return AnonymousObservable(subscribe)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>常用的 <code>create</code> 方法是定义在 <code>ObservableType</code> 协议的 extension 中，并有默认的实现，返回一个 <code>AnonymousObservable</code> 对象。</p>
+<p><code>AnonymousObservable</code> 是一个 继承 <code>Producer</code>，而 Producer 继承自 <code>Observable</code>。  </p>
+<p>看如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">let sequence = Observable&lt;String&gt;.create(&#123; (observer) -&gt; Disposable in</span><br><span class="line">        observer.on(.next(&quot;hello world!&quot;))</span><br><span class="line">        observer.on(.completed)</span><br><span class="line">        </span><br><span class="line">        return Disposables.create()</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    // 方案1</span><br><span class="line">    sequence.subscribe(&#123; (event) in</span><br><span class="line">        print(event)</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    // 方案2</span><br><span class="line">    let observer = AnyObserver&lt;String&gt;.init(eventHandler: &#123; (event) in</span><br><span class="line">        print(event)</span><br><span class="line">    &#125;)</span><br><span class="line">    sequence.subscribe(observer)</span><br></pre></td></tr></table></figure>
+<p>上面两个方案是等价的，因为方案1传入的闭包最终会封装成为一个 Observer。并且只要调用 Observable 的 subscribe 方法，最终都会回到方案2的方式，这就对应了 ObservableType protocol。</p>
+<p>当然这里 Observable 的 create 方法传入的闭包中的 observer 并不是我们调用 subscribe 方法传入的 observer。RxSwift 具体实现中，会对我们传入的 observer 再进行一些封装，一般是由 Sink 的子类作为容器。这样就能方便对传入的 event 进行一些处理及操作。</p>
+<h1 id="数据（Event）流动"><a href="#数据（Event）流动" class="headerlink" title="数据（Event）流动"></a>数据（Event）流动</h1><p>我们调用 Observable 的 subscribe 方法，就打开了数据的闸门，数据就自顶向下开始流动，中间我们可以调用例如 map、flatMap、concat 等操作符来处理数据。</p>
+<p>这个有点像军训的时候我们报数，我们从一端开始报数，直到末端才算完成。而在 RxSwift 我们调用 subscribe 方法报数，直到最顶上。当到达了最顶上，数据开始生成（仅针对于 Cold Observabels，Hot Observabels 并不是如此，具体请参考 <a href="https://github.com/ReactiveX/RxSwift/blob/master/Documentation/HotAndColdObservables.md" target="_blank" rel="noopener">Hot and Cold Observables</a>），又从最顶上通过各种操作符，依次向下传递，直到末端。</p>
+<p>所以我们看到，数据流动是需要依赖中间每个“人”的配合才行的，如果中间某个“人”使坏，把数据给吞掉，不再向下传递，那么最终 observer 就不会收到数据。因此在 RxSwift 中，每个操作符都是被精心设计的。</p>
+<p>整个数据流动的流程：</p>
+<ol>
+<li>底部发出启动 </li>
+<li>向顶部传递启动命令 </li>
+<li>顶部收到启动命令 </li>
+<li>生成 event</li>
+<li>自顶向下传递（包括可能的 event 处理）event</li>
+<li>底部接收 event</li>
+</ol>
+<p>需要特别说明的是第5步，一个 event 并不总是从最顶部的 Observabel 生成。例如使用了 flatMap 操作符，那么 event 可能是直接从 flatMap 方法返回的 Observabel 生成的，但是第一个 event 必定是从最顶部生成。下面是一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">let disposeBag = DisposeBag()</span><br><span class="line">    </span><br><span class="line">    struct Player &#123;</span><br><span class="line">        var score: Variable&lt;Int&gt;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    let 👦🏻 = Player(score: Variable(80))</span><br><span class="line">    let 👧🏼 = Player(score: Variable(90))</span><br><span class="line">    </span><br><span class="line">    let player = Variable(👦🏻)</span><br><span class="line">    </span><br><span class="line">    // 注意 flatMap 方法</span><br><span class="line">    player.asObservable()</span><br><span class="line">        .flatMap &#123; $0.score.asObservable() &#125; // Change flatMap to flatMapLatest and observe change in printed output</span><br><span class="line">        .subscribe(onNext: &#123; print($0) &#125;)</span><br><span class="line">        .disposed(by: disposeBag)</span><br><span class="line">    </span><br><span class="line">    👦🏻.score.value = 85</span><br><span class="line">    </span><br><span class="line">    player.value = 👧🏼</span><br><span class="line">    </span><br><span class="line">    👦🏻.score.value = 95 // Will be printed when using flatMap, but will not be printed when using flatMapLatest</span><br><span class="line">    </span><br><span class="line">    👧🏼.score.value = 100</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">80</span><br><span class="line">85</span><br><span class="line">90</span><br><span class="line">95</span><br><span class="line">100</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/04/problems-and-solutions-for-iOS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -788,7 +991,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

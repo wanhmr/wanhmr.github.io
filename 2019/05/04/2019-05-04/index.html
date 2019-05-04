@@ -120,7 +120,7 @@
 <meta property="og:image" content="https://developer.apple.com/library/archive/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/Art/textpg_intro_2x.png">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1200356-e3c6b2e200418385.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400">
 <meta property="og:image" content="https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/Art/text_system_architecture_2x.png">
-<meta property="og:updated_time" content="2019-05-04T15:33:48.367Z">
+<meta property="og:updated_time" content="2019-05-04T15:37:17.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cocoa 文本系统介绍">
 <meta name="twitter:description" content="文字排版在开始文本系统介绍之前，我们先了解一下文字是怎么排版的，而要了解文字的排版就必须现有一些基本概念。 我这里只做简单地介绍，具体请参考：Typographical Concepts。 字符（Characters）与字形（Glyphs） 上图表示的是连字（Ligatures），连字由字符 “f” 以及字符 “l” 组成，它们组合后成为一个字形（Glyph）。与此类似的还有 “é”，它由 “e”">
@@ -391,7 +391,7 @@
                 
               
 
-              <time title="Created: 2019-05-04 23:32:52 / Modified: 23:33:48" itemprop="dateCreated datePublished" datetime="2019-05-04T23:32:52+08:00">2019-05-04</time>
+              <time title="Created: 2019-05-04 23:32:52 / Modified: 23:37:17" itemprop="dateCreated datePublished" datetime="2019-05-04T23:32:52+08:00">2019-05-04</time>
             
 
             
@@ -445,7 +445,7 @@
 <p>我这里只做简单地介绍，具体请参考：<a href="https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/TypoFeatures/TextSystemFeatures.html#//apple_ref/doc/uid/TP40009459-CH6-64585" target="_blank" rel="noopener">Typographical Concepts</a>。</p>
 <h3 id="字符（Characters）与字形（Glyphs）"><a href="#字符（Characters）与字形（Glyphs）" class="headerlink" title="字符（Characters）与字形（Glyphs）"></a>字符（Characters）与字形（Glyphs）</h3><p><img src="https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/Art/romanligatures_2x.png" width="100"></p>
 <p>上图表示的是连字（Ligatures），连字由字符 “f” 以及字符 “l” 组成，它们组合后成为一个字形（Glyph）。<br>与此类似的还有 “é”，它由 “e” 与 “´” 组合而成。</p>
-<p>可以看到，字符与字型不一定是一一对应的关系，当然在一般情况下，它们可以看做是一一对应的。</p>
+<p>可以看到，字符与字形不一定是一一对应的关系，当然在一般情况下，它们可以看做是一一对应的。</p>
 <h4 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h4><p>计算机通过编码表将字符存储为数字。在 Cocoa 平台的编码方案为 Unicode 标准。Unicode 标准为世界上每种现代书面语言中的每个字符提供了一个惟一的数字，其独立于所使用的平台、程序和编程语言。这个通用标准解决了一个长期存在的问题，即不同的计算机系统使用数百种相互冲突的编码方案。它还具有简化处理双向文本和上下文表单的功能。</p>
 <h4 id="字形结构"><a href="#字形结构" class="headerlink" title="字形结构"></a>字形结构</h4><p><img src="https://developer.apple.com/library/archive/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/Art/textpg_intro_2x.png" width="700"></p>
 <h3 id="字体（Fonts）"><a href="#字体（Fonts）" class="headerlink" title="字体（Fonts）"></a>字体（Fonts）</h3><p>上面介绍了字符与字形的关系，那么它们的关系具体又是什么呢？这就需要用到字体了。</p>

@@ -108,24 +108,30 @@
 
 
 
-  <meta name="description" content="过年的生活回家这段时间和高中的同学聊了很多的东西，也逛了很多马路。虽说是回家过年的，本应该是高高兴兴，但不管是言语还是神态中都是显而易见的焦虑。我们有情感的焦虑也有物质的焦虑。 我跨过山和大海，也穿过人山人海。 然后，我迷路了，我回不去了。 关键词计划生育、改革开放、互联网普及，随之带来的是：人口老龄化、经济腾飞、信息共享万物互联。我们的焦虑也伴随着他们的发展而发展。 养老我妈在家中排老三，她还有">
+  <meta name="description" content="文字排版在开始文本系统介绍之前，我们先了解一下文字是怎么排版的，而要了解文字的排版就必须现有一些基本概念。 我这里只做简单地介绍，具体请参考：Typographical Concepts。 字符（Characters）与字形（Glyphs） 上图表示的是连字（Ligatures），连字由字符 “f” 以及字符 “l” 组成，它们组合后成为一个字形（Glyph）。与此类似的还有 “é”，它由 “e”">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="迷雾">
-<meta property="og:url" content="http://yoursite.com/2019/02/17/2019-02-17/index.html">
+<meta property="og:title" content="Cocoa 文本系统介绍">
+<meta property="og:url" content="http://yoursite.com/2019/05/04/2019-05-04/index.html">
 <meta property="og:site_name" content="Tpphha">
-<meta property="og:description" content="过年的生活回家这段时间和高中的同学聊了很多的东西，也逛了很多马路。虽说是回家过年的，本应该是高高兴兴，但不管是言语还是神态中都是显而易见的焦虑。我们有情感的焦虑也有物质的焦虑。 我跨过山和大海，也穿过人山人海。 然后，我迷路了，我回不去了。 关键词计划生育、改革开放、互联网普及，随之带来的是：人口老龄化、经济腾飞、信息共享万物互联。我们的焦虑也伴随着他们的发展而发展。 养老我妈在家中排老三，她还有">
+<meta property="og:description" content="文字排版在开始文本系统介绍之前，我们先了解一下文字是怎么排版的，而要了解文字的排版就必须现有一些基本概念。 我这里只做简单地介绍，具体请参考：Typographical Concepts。 字符（Characters）与字形（Glyphs） 上图表示的是连字（Ligatures），连字由字符 “f” 以及字符 “l” 组成，它们组合后成为一个字形（Glyph）。与此类似的还有 “é”，它由 “e”">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-17T15:05:29.011Z">
+<meta property="og:image" content="https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/Art/romanligatures_2x.png">
+<meta property="og:image" content="https://developer.apple.com/library/archive/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/Art/textpg_intro_2x.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1200356-e3c6b2e200418385.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400">
+<meta property="og:image" content="https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/Art/text_system_architecture_2x.png">
+<meta property="og:updated_time" content="2019-05-04T15:33:48.367Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="迷雾">
-<meta name="twitter:description" content="过年的生活回家这段时间和高中的同学聊了很多的东西，也逛了很多马路。虽说是回家过年的，本应该是高高兴兴，但不管是言语还是神态中都是显而易见的焦虑。我们有情感的焦虑也有物质的焦虑。 我跨过山和大海，也穿过人山人海。 然后，我迷路了，我回不去了。 关键词计划生育、改革开放、互联网普及，随之带来的是：人口老龄化、经济腾飞、信息共享万物互联。我们的焦虑也伴随着他们的发展而发展。 养老我妈在家中排老三，她还有">
+<meta name="twitter:title" content="Cocoa 文本系统介绍">
+<meta name="twitter:description" content="文字排版在开始文本系统介绍之前，我们先了解一下文字是怎么排版的，而要了解文字的排版就必须现有一些基本概念。 我这里只做简单地介绍，具体请参考：Typographical Concepts。 字符（Characters）与字形（Glyphs） 上图表示的是连字（Ligatures），连字由字符 “f” 以及字符 “l” 组成，它们组合后成为一个字形（Glyph）。与此类似的还有 “é”，它由 “e”">
+<meta name="twitter:image" content="https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/Art/romanligatures_2x.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/17/2019-02-17/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/05/04/2019-05-04/"/>
 
 
 
@@ -135,7 +141,7 @@
   };
 </script>
 
-  <title>迷雾 | Tpphha</title>
+  <title>Cocoa 文本系统介绍 | Tpphha</title>
   
 
 
@@ -343,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/17/2019-02-17/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/2019-05-04/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tpphha">
@@ -360,7 +366,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">迷雾
+          <h1 class="post-title" itemprop="name headline">Cocoa 文本系统介绍
               
             
           </h1>
@@ -385,7 +391,7 @@
                 
               
 
-              <time title="Created: 2019-02-17 21:14:28 / Modified: 23:05:29" itemprop="dateCreated datePublished" datetime="2019-02-17T21:14:28+08:00">2019-02-17</time>
+              <time title="Created: 2019-05-04 23:32:52 / Modified: 23:33:48" itemprop="dateCreated datePublished" datetime="2019-05-04T23:32:52+08:00">2019-05-04</time>
             
 
             
@@ -404,10 +410,10 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/17/2019-02-17/#comments" itemprop="discussionUrl">
+                <a href="/2019/05/04/2019-05-04/#comments" itemprop="discussionUrl">
                 
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/02/17/2019-02-17/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2019/05/04/2019-05-04/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -435,24 +441,35 @@
       
 
       
-        <h3 id="过年的生活"><a href="#过年的生活" class="headerlink" title="过年的生活"></a>过年的生活</h3><p>回家这段时间和高中的同学聊了很多的东西，也逛了很多马路。虽说是回家过年的，本应该是高高兴兴，但不管是言语还是神态中都是显而易见的焦虑。我们有情感的焦虑也有物质的焦虑。</p>
-<p>我跨过山和大海，也穿过人山人海。</p>
-<p>然后，我迷路了，我回不去了。</p>
-<h3 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h3><p>计划生育、改革开放、互联网普及，随之带来的是：人口老龄化、经济腾飞、信息共享万物互联。我们的焦虑也伴随着他们的发展而发展。</p>
-<h3 id="养老"><a href="#养老" class="headerlink" title="养老"></a>养老</h3><p>我妈在家中排老三，她还有两个妹妹一个弟弟；我爸在家中排老四，他还有两个弟弟。我奶奶和我姥爷已经去世了，现在只剩下我爷爷和姥姥，他们都无退休工资，除了很少的政府补助基本就只能靠他们的孩子们养老，但是由于孩子众多所以平摊到我爸妈身上的养老费并不算多。</p>
-<p>而到了他们下一代，也就是我这代，由于计划生育的实施，导致生育率大幅下降。如果我们结婚的双方都是独生子女，并且双方父母无退休金，如果他们年轻时没有存足够钱养老（这种情况下，有买保险的少之又少。），那么双方父母的养老是不能够回避的大问题。</p>
-<p>延迟退休、养老金入市、开放二胎这些政策的实施无不显示着养老的压力。</p>
-<p>咱们就活到老干到老吧哈哈。</p>
-<h3 id="教育"><a href="#教育" class="headerlink" title="教育"></a>教育</h3><p>计划生育的实施不仅没有减轻学习成本，反而增加了学习成本。</p>
-<p>由于出生人口大幅减少，很多村级学校由于招生人口不足导致学校办不下去，学生们不得不去离家远的镇办学校和更上一级的学校读书。反而由于通勤的距离变长，花费在路上的时间更多，造成不能够回家吃饭以及不能够帮家中务农。这无疑增加了学习成本。</p>
-<h3 id="医疗"><a href="#医疗" class="headerlink" title="医疗"></a>医疗</h3><p>上帝保佑。祝福父母身体健康，自己多锻炼少熬夜，打算买个保险。</p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>由于最近我所有的时间都花在想挣钱上面，所以上面也写的乱七八糟。</p>
-<p>今天也刚刚和一个创业者谈了很久，他做的兴趣社区产品，但是我没有认同他的产品，因为我看不到产品的价值。</p>
-<p>最近想了很多项目：母婴用品、土特产、茶油、图文广告、阅读。</p>
-<p>最终确定：不管做什么产品，一定要是轻资产的方式。</p>
-<p>最近真是一言难尽，等我想明白我再总结下。</p>
-<p>最后，捂脸，手指缝偷偷喵喵地看着梅姨。</p>
-<p>唔，我又水了一篇。</p>
+        <h2 id="文字排版"><a href="#文字排版" class="headerlink" title="文字排版"></a>文字排版</h2><p>在开始文本系统介绍之前，我们先了解一下文字是怎么排版的，而要了解文字的排版就必须现有一些基本概念。</p>
+<p>我这里只做简单地介绍，具体请参考：<a href="https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/TypoFeatures/TextSystemFeatures.html#//apple_ref/doc/uid/TP40009459-CH6-64585" target="_blank" rel="noopener">Typographical Concepts</a>。</p>
+<h3 id="字符（Characters）与字形（Glyphs）"><a href="#字符（Characters）与字形（Glyphs）" class="headerlink" title="字符（Characters）与字形（Glyphs）"></a>字符（Characters）与字形（Glyphs）</h3><p><img src="https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/Art/romanligatures_2x.png" width="100"></p>
+<p>上图表示的是连字（Ligatures），连字由字符 “f” 以及字符 “l” 组成，它们组合后成为一个字形（Glyph）。<br>与此类似的还有 “é”，它由 “e” 与 “´” 组合而成。</p>
+<p>可以看到，字符与字型不一定是一一对应的关系，当然在一般情况下，它们可以看做是一一对应的。</p>
+<h4 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h4><p>计算机通过编码表将字符存储为数字。在 Cocoa 平台的编码方案为 Unicode 标准。Unicode 标准为世界上每种现代书面语言中的每个字符提供了一个惟一的数字，其独立于所使用的平台、程序和编程语言。这个通用标准解决了一个长期存在的问题，即不同的计算机系统使用数百种相互冲突的编码方案。它还具有简化处理双向文本和上下文表单的功能。</p>
+<h4 id="字形结构"><a href="#字形结构" class="headerlink" title="字形结构"></a>字形结构</h4><p><img src="https://developer.apple.com/library/archive/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/Art/textpg_intro_2x.png" width="700"></p>
+<h3 id="字体（Fonts）"><a href="#字体（Fonts）" class="headerlink" title="字体（Fonts）"></a>字体（Fonts）</h3><p>上面介绍了字符与字形的关系，那么它们的关系具体又是什么呢？这就需要用到字体了。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1200356-e3c6b2e200418385.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt=""></p>
+<p>字符加字体可以得到字形，在 Cocoa 中我们通过字体可以得到 CGGlyph，渲染的时候我们使用 CTFont 的方法传入 CGGlyph 就可以渲染出实际的文字。</p>
+<h2 id="文本系统架构"><a href="#文本系统架构" class="headerlink" title="文本系统架构"></a>文本系统架构</h2><p><img src="https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/Art/text_system_architecture_2x.png" width="488"></p>
+<p>无论是 macOS 还是 iOS，苹果的文本系统的架构都是一样的，如上图所示。<br>在 Typesetter 以及 Glyph generator 之下是 CoreText，所以系统的整个文本系统是构建在 CoreText 之上。</p>
+<blockquote>
+<p>在 iOS 平台，系统隐藏了 Typesetter、 Glyph generator。</p>
+</blockquote>
+<p>整个系统遵循 MVC 的架构设计：</p>
+<ul>
+<li>Model：<code>NSTextStorage</code>、<code>NSTextContainer</code>；</li>
+<li>View：在 macOS 是 <code>NSTextView</code>，在 iOS 是 <code>UITextView</code>；</li>
+<li>Controller：<code>NSLayoutManager</code>。</li>
+</ul>
+<p><code>NSTextStorage</code> 保存富文本数据；<code>NSTextContainer</code> 提供布局区域；<code>TextView</code> 真实地展示文本；<code>NSLayoutManager</code> 来管理所有的布局以及缓存布局信息。</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="https://developer.apple.com/library/archive/documentation/StringsTextFonts/Conceptual/CoreText_Programming/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005533-CH1-SW1" target="_blank" rel="noopener">Core Text Programming Guide</a></li>
+<li><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/TextAttributes/TextAttributes.html#//apple_ref/doc/uid/10000088-SW1" target="_blank" rel="noopener">Text Attribute Programming Topics</a></li>
+<li><a href="https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009459" target="_blank" rel="noopener">Cocoa Text Architecture Guide</a></li>
+<li><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/TextLayout/TextLayout.html#//apple_ref/doc/uid/10000158-SW1" target="_blank" rel="noopener">Text Layout Programming Guide</a></li>
+<li><a href="https://developer.apple.com/library/archive/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009542-CH1-SW1" target="_blank" rel="noopener">Text Programming Guide for iOS</a></li>
+</ul>
 
       
     </div>
@@ -474,6 +491,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+        </div>
+      
 
       
       
@@ -483,8 +506,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/27/2019-01-27/" rel="next" title="我的家乡">
-                <i class="fa fa-chevron-left"></i> 我的家乡
+              <a href="/2019/04/14/2019-04-14/" rel="next" title="2019-04-14">
+                <i class="fa fa-chevron-left"></i> 2019-04-14
               </a>
             
           </div>
@@ -492,10 +515,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/02/trip-to-xiamen/" rel="prev" title="厦门之行">
-                厦门之行 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -645,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#过年的生活"><span class="nav-number">1.</span> <span class="nav-text">过年的生活</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词"><span class="nav-number">2.</span> <span class="nav-text">关键词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#养老"><span class="nav-number">3.</span> <span class="nav-text">养老</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#教育"><span class="nav-number">4.</span> <span class="nav-text">教育</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#医疗"><span class="nav-number">5.</span> <span class="nav-text">医疗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文字排版"><span class="nav-number">1.</span> <span class="nav-text">文字排版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符（Characters）与字形（Glyphs）"><span class="nav-number">1.1.</span> <span class="nav-text">字符（Characters）与字形（Glyphs）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字符编码"><span class="nav-number">1.1.1.</span> <span class="nav-text">字符编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字形结构"><span class="nav-number">1.1.2.</span> <span class="nav-text">字形结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字体（Fonts）"><span class="nav-number">1.2.</span> <span class="nav-text">字体（Fonts）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本系统架构"><span class="nav-number">2.</span> <span class="nav-text">文本系统架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文档"><span class="nav-number">3.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
             
 
           </div>
@@ -800,9 +819,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2019/02/17/2019-02-17/';
-        this.page.identifier = '2019/02/17/2019-02-17/';
-        this.page.title = '迷雾';
+        this.page.url = 'http://yoursite.com/2019/05/04/2019-05-04/';
+        this.page.identifier = '2019/05/04/2019-05-04/';
+        this.page.title = 'Cocoa 文本系统介绍';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

@@ -340,6 +340,251 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/04/problems-and-solutions-for-iOS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tpphha">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tpphha">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/11/04/problems-and-solutions-for-iOS/" class="post-title-link" itemprop="http://yoursite.com/page/3/index.html">开发过程中遇到问题与解决方案</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-11-04 21:33:45" itemprop="dateCreated datePublished" datetime="2017-11-04T21:33:45+08:00">2017-11-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-18 22:47:18" itemprop="dateModified" datetime="2018-11-18T22:47:18+08:00">2018-11-18</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/04/problems-and-solutions-for-iOS/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/04/problems-and-solutions-for-iOS/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在 iOS 开发的过程中，我们需要做的事情一般可以归类于：</p>
+<ul>
+<li>用户界面的实现以及跳转</li>
+<li>网络数据的请求与处理</li>
+<li>用户数据的缓存与上传</li>
+<li>native 与 wap 的通信</li>
+<li>性能优化、编译优化</li>
+<li>代码规范、持续迭代、周边工具搭建</li>
+<li>统计埋点</li>
+</ul>
+<h3 id="用户界面的实现以及跳转"><a href="#用户界面的实现以及跳转" class="headerlink" title="用户界面的实现以及跳转"></a>用户界面的实现以及跳转</h3><p>在开发过程中，我们的大部分时间可能都花在了这里。各种复杂的 UI 布局以及交互都会让我们头痛。而在 iOS 开发过程中使用最多的控件可能就是这些：UITableView、UICollectionView、UIButton、UILabel、UIImageView。</p>
+<p>而所有页面的骨架基本由其中 UITableView、UICollectionView 提供，那么怎样优雅便捷地使用这两个控件就显得尤为重要。</p>
+<h3 id="使用-UITableView、UICollectionView-的问题与解决方案"><a href="#使用-UITableView、UICollectionView-的问题与解决方案" class="headerlink" title="使用 UITableView、UICollectionView 的问题与解决方案"></a>使用 UITableView、UICollectionView 的问题与解决方案</h3><p>在使用这两个控件的过程中，我们需要一般会实现其的 delegate 与 dataSource。</p>
+<p>在使用 tableView 的时候，我们一般会有如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section</span><br><span class="line">&#123;</span><br><span class="line">    return numberOfItems;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (UITableViewCell *)tableView:(UITableView *)tableView</span><br><span class="line">         cellForRowAtIndexPath:(NSIndexPath *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    if (indexPath.section == 0) &#123;</span><br><span class="line">        return A_Cell;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        return B_cell;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tableView -&gt; section -&gt; cell</span><br></pre></td></tr></table></figure>
+<p>上面的代码会判断 section 来返回不同的 cell，而在实际情况中逻辑会比上面复杂。 假如业务需求变化了，需要更改 sectin 的位置，那么我们需要修改 tableView:cellForRowAtIndexPath: 方法的逻辑判断。当业务复杂的时候，这种修改会变得非常困难。</p>
+<p>为了解决这个问题，于是我们参考了 IGListKit，他基于 UICollectionView 实现，基本思想是把每个 section 的管理交给 IGListSectionController，然后 IGListSectionController 再管理自己的每个 Item。并且实现了：</p>
+<ul>
+<li>更高效的数据更新，实现了 diff 算法，时间复杂度 O(n)</li>
+<li>共享 cell 的注册</li>
+<li>其他一些扩展，如数据绑定、section 合并等</li>
+</ul>
+<p>同样的，我们根据上面的思想基于 UITableView 实现了自己的 tableView UI 组件，彻底地解决了 UITableView、UICollectionView 的使用问题。</p>
+<h3 id="页面跳转以及兼容-wap-端到-native-页面跳转"><a href="#页面跳转以及兼容-wap-端到-native-页面跳转" class="headerlink" title="页面跳转以及兼容 wap 端到 native 页面跳转"></a>页面跳转以及兼容 wap 端到 native 页面跳转</h3><p>由于项目比较多的地方接入了 wap 页面，而为了兼容 wap 页面在 app 内的跳转（如在 app 内，如果 wap 跳转的页面是 native 支持的页面，那么就不需要跳转到 wap，而应该直接跳转到 native 页面），所以我们根据URL实现了一套路由跳转机制，从而可以不需要 wap 做任何需改，就能从 wap 跳转到想要的页面。</p>
+<h3 id="其他-UI-问题"><a href="#其他-UI-问题" class="headerlink" title="其他 UI 问题"></a>其他 UI 问题</h3><p>我们引入了 <a href="https://github.com/QMUI/QMUI_iOS" target="_blank" rel="noopener">QMUI</a>，从而解决了平常的用户界面开发困难且低效的问题。当然我们在使用的过程中也不断地发现框架的一些问题，并且提交了部分 PR。</p>
+<h3 id="网络数据的请求与处理"><a href="#网络数据的请求与处理" class="headerlink" title="网络数据的请求与处理"></a>网络数据的请求与处理</h3><p>在处理网络请求时，我们有以下问题需要面对：</p>
+<ul>
+<li>所有请求的管理</li>
+<li>请求的批量处理</li>
+<li>请求的依赖处理</li>
+<li>请求的缓存处理</li>
+<li>请求的防劫持处理</li>
+<li>请求响应数据的类型检测</li>
+</ul>
+<p>为了应对这些问题，我们引入了 YTKNetwork，一个请求相当于一个资源，很好的解决了上面所说的部分问题，并且针对防劫持，我们引入了 HTTPDNS，并且由于不需要再次进行域名解析，相应的加快了请求访问速度。</p>
+<p>而我们最终需要的数据一般都是 model，因此在基础上增加了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (Class)responseClass;</span><br><span class="line"></span><br><span class="line">- (id)parse;</span><br></pre></td></tr></table></figure>
+<p>requsest 子类可以自行实现这两个方法，这样就基本解决了数据解析的问题。</p>
+<p>值得一提的是，我们根据 YTKNetwork 的 accessory 机制实现了自动空页面、上下拉刷新等</p>
+<h3 id="用户数据的缓存与上传"><a href="#用户数据的缓存与上传" class="headerlink" title="用户数据的缓存与上传"></a>用户数据的缓存与上传</h3><h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><p>用户数据缓存方面我们使用了 UserDefaults 以及 sqlite</p>
+<p>除 UserDefaults，我们没有直接使用 sqlite，而是使用了更加易用的 YYCache 以及 GYDataCenter</p>
+<p>YYCache：是基于 sqlite 实现，具有 diskCache 和 memoryCache，并且实现了 LRU 淘汰算法、更快的数据统计，更多的容量控制选项。</p>
+<p>GYDataCenter：基于 sqlite 的实现，但是使用过程中发现了一些问题，如不能简单的支持计算 sql、不支持约束等。在使用的过程中也提交了 PR</p>
+<p>这里重点说下图片的缓存，因为图片缓存在 app 占的比重是最大的。目前项目的图像加载使用了 YYWebImage，其自带缓存，由 YYImageCache 提供缓存支持，针对图片缓存做了更细致的处理。在使用过程中遇到了如下问题：</p>
+<ol>
+<li><p>根据不同机型图片尺寸加载问题，避免加载过大图片浪费流量</p>
+</li>
+<li><p>同一张图片，项目有的地方需要圆形图片、有的地方只需要一点圆角，同时为了避免离屏渲染，我们会使用 YYWebImage 提供的图片裁剪功能，其会将裁剪过的图片进行保存。但是这是不能够接受的，因为这很浪费流量。</p>
+</li>
+</ol>
+<p>针对问题1，由于我们使用了阿里云的 OSS 服务，可以方便的使用其自带的图片裁剪功能做适配。所以我们针对不同机型做了适配，保证不能放大的图最大只下载本机尺寸的图片。</p>
+<p>针对问题2，我们修改了 YYWebImage 的图片裁剪功能，让其可以支持对一张图片进行多次裁剪，并且保存多张裁剪过的图片，这样就解决的一张图片因为需要支持不同的圆角而进行多次下载的问题。</p>
+<h4 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h4><p>针对上传的优化，主要是做了分段上传、资源压缩</p>
+<h3 id="native-与-wap-的通信"><a href="#native-与-wap-的通信" class="headerlink" title="native 与 wap 的通信"></a>native 与 wap 的通信</h3><p>为了节约开发成本以及公司的活动运营，我们比较多的接入了 wap，而为了解决 native 与 wap 间的通信问题，参考了大部分的开源实现，也参考了微信源码及微信的 JSSDK，最终实现了一套自己的基于插件化的 native 与 wap 通信的组件。</p>
+<p>native 与 wap 间的通信，在 iOS 8 之前，不调用私有 API，基本都是：</p>
+<p>通过拦截 URL 的方式实现，而到了 iOS 8，系统的 WKWebView 通过<br>WKScriptMessageHandler 原生支持 native 与 wap 间的通信。</p>
+<p>由于项目从 iOS 8 开始支持，所以我选择了后一种方案，并申请进行了开源，项目地址：<a href="https://github.com/wanhmr/TPJsBridge" target="_blank" rel="noopener">TPJsBridge</a></p>
+<h3 id="埋点统计"><a href="#埋点统计" class="headerlink" title="埋点统计"></a>埋点统计</h3><p>参考了<a href="https://github.com/sensorsdata/sa-sdk-ios" target="_blank" rel="noopener">神策数据</a>的方案，设计出一套适合自己的埋点方案。</p>
+<p>这里一开始的时候太想依赖于 AOP 去解决所有的埋点，后面发现是不可能的，走了弯路。</p>
+<p>并且由于我们还针对曝光埋点，而曝光埋点没有那么容易，因为不管是 tableView 还是 collectionView 都会有复用机制，所以比较麻烦。这里有两种方案：</p>
+<ol>
+<li>使用 indexPath 作索引，这样可以再 scrollView 上记录所有已经曝光的 indexPaths, 并且这是可以自动化的，但是插入删除数据就会有一些问题</li>
+<li>使用自定义的 ID 作索引，这个方案需要主动提供 ID 来作为索引，但是插入删除数据都没有影响</li>
+</ol>
+<h3 id="性能优化、编译优化"><a href="#性能优化、编译优化" class="headerlink" title="性能优化、编译优化"></a>性能优化、编译优化</h3><p>性能优化主要是检测 crash 率，以及检测页面的卡顿情况</p>
+<h3 id="降低-crash-率"><a href="#降低-crash-率" class="headerlink" title="降低 crash 率"></a>降低 crash 率</h3><p>通过接入 bugly，不断的发现问题解决问题，我们从 0.01 的 crash 率降低到了 0.001。</p>
+<p>并且发现大部分的 crash 都是由于数据类型错误以及临界条件判断不够导致的。</p>
+<p>我们通过 code review 以及代码静态检查，这些问题大部分得到解决。</p>
+<h3 id="降低卡顿"><a href="#降低卡顿" class="headerlink" title="降低卡顿"></a>降低卡顿</h3><p>通过检测页面的 FPS 来发现卡顿，对于有卡顿的地方使用 instrument 来发现耗时的地方。</p>
+<p>一般造成卡顿的原因有这些：</p>
+<ol>
+<li>在设置 cell 和 计算 cell 高度中，有大量的计算</li>
+<li>离屏渲染、view 的层级过多，并且过多的层级设置了透明度</li>
+</ol>
+<p>针对1，我们使用 viewModel 避免重复计算一些属性，并且对 cell 做高度缓存（UICollectionView 自带 cell 高度缓存）。</p>
+<p>针对2，我们的图片会在第一次使用的时候裁剪成希望的样式，避免了圆角的设置。并且我们会避免过多 view 层级的嵌套以及 alpha 的使用。在需要的时候也可以使用 AsyncDisplayKit来提高性能。</p>
+<h3 id="代码规范、持续迭代、周边工具搭建"><a href="#代码规范、持续迭代、周边工具搭建" class="headerlink" title="代码规范、持续迭代、周边工具搭建"></a>代码规范、持续迭代、周边工具搭建</h3><ul>
+<li>代码规范：我们使用了模板文件以及代码检查</li>
+<li>持续迭代：我们使用 fastlane + jenkins + dingtalk，做到了 代码提交 -&gt; 自动打包 -&gt; 发送信息通知测试。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/08/passion/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -543,7 +788,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

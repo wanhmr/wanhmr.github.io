@@ -1,152 +1,89 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Tpphha" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '6.5.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
-    fastclick: false,
+    mediumzoom: false,
     lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    pangu: false,
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
   };
 </script>
 
-
-  
-
-
-
-
   <meta property="og:type" content="website">
 <meta property="og:title" content="Tpphha">
-<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;4&#x2F;index.html">
 <meta property="og:site_name" content="Tpphha">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tpphha">
+
+<link rel="canonical" href="http://yoursite.com/page/4/">
 
 
-
-
-
-
-  <link rel="canonical" href="http://yoursite.com/page/4/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
   };
 </script>
 
   <title>Tpphha</title>
   
-
-
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117510171-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-117510171-1');
-</script>
-
-
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117510171-1"></script>
+    <script>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-117510171-1');
+      }
+    </script>
 
 
 
@@ -154,277 +91,152 @@
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Tpphha</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-commonweal">
+        <li class="menu-item menu-item-commonweal">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/404.html" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />Commonweal 404</a>
+    <a href="/404.html" rel="section"><i class="fa fa-fw fa-heartbeat"></i>Commonweal 404</a>
 
   </li>
+  </ul>
 
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
 </nav>
-
-
-
-  
-
-
-
 </div>
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content">
             
-  <section id="posts" class="posts-expand">
-    
-      
 
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/06/2019-01-06/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/06/2019-01-06/" class="post-title-link" itemprop="http://yoursite.com/page/4/index.html">2018 年度总结（搞笑版）</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/06/2019-01-06/" class="post-title-link" itemprop="url">2018 年度总结（搞笑版）</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">Posted on</span>
               
 
               <time title="Created: 2019-01-06 21:09:25 / Modified: 22:47:38" itemprop="dateCreated datePublished" datetime="2019-01-06T21:09:25+08:00">2019-01-06</time>
-            
-
-            
-              
-
-              
-            
-          </span>
+            </span>
 
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/06/2019-01-06/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/01/06/2019-01-06/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2019/01/06/2019-01-06/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/06/2019-01-06/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -432,12 +244,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>呜呜呜，致我含冤死去的 2018。</p>
+          <p>呜呜呜，致我含冤死去的 2018。</p>
 <h3 id="俱往矣"><a href="#俱往矣" class="headerlink" title="俱往矣"></a>俱往矣</h3><p>刚刚过去的 2018 年，我从生活舒适的广州来到了天气干燥寒冷的北京，从创业的千聊来到了上市的美图。</p>
 <p>除此外好像就没什么可说的，或者这也不算是什么可说的事情。</p>
 <p>这意味着在我看来，过去的一年，我没有做出任何自己觉得有价值或者有意味的事情。</p>
@@ -481,146 +288,70 @@
 <p>I need you!!</p>
 <p>I want you!!!!</p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/31/2018-12-31/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/31/2018-12-31/" class="post-title-link" itemprop="http://yoursite.com/page/4/index.html">产品：一款新的打卡工具</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/31/2018-12-31/" class="post-title-link" itemprop="url">产品：一款新的打卡工具</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">Posted on</span>
               
 
               <time title="Created: 2018-12-31 19:10:42 / Modified: 21:35:20" itemprop="dateCreated datePublished" datetime="2018-12-31T19:10:42+08:00">2018-12-31</time>
-            
-
-            
-              
-
-              
-            
-          </span>
+            </span>
 
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/12/31/2018-12-31/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/12/31/2018-12-31/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/12/31/2018-12-31/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/31/2018-12-31/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -628,12 +359,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>这个产品缘起于一个约定，我和梅姨约定每周分享一篇自己写的文章给对方，有时候我们会针对对方的文章评论或者赞赏。这个约定的目标是能够让大家输出一些内容，以此记录生活以及提高个人影响力。</p>
+          <p>这个产品缘起于一个约定，我和梅姨约定每周分享一篇自己写的文章给对方，有时候我们会针对对方的文章评论或者赞赏。这个约定的目标是能够让大家输出一些内容，以此记录生活以及提高个人影响力。</p>
 <p>在这个自媒体发达的时代，个人品牌及影响力的重要性是毫无疑问的。而对于个体来说，输出内容，分享内容则是提升个人影响力最为重要的途径。当然这次不是谈这个，我们回归正题。</p>
 <p>我们可以知道约定有以下几个要素：</p>
 <ul>
@@ -661,146 +387,70 @@
 <h3 id="结构及流程"><a href="#结构及流程" class="headerlink" title="结构及流程"></a>结构及流程</h3><p>综上，所以我们可以改进目前的打卡方式，由别人来判定当次打卡是否完成，由别人来评价你当次打卡的质量。（其实这个并不新鲜，类似于 code review。）</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/1200356-742a366c91504318.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320" alt=""></p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/23/2018-12-23/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/23/2018-12-23/" class="post-title-link" itemprop="http://yoursite.com/page/4/index.html">在自己房间内的旅行</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/23/2018-12-23/" class="post-title-link" itemprop="url">在自己房间内的旅行</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">Posted on</span>
               
 
               <time title="Created: 2018-12-23 22:58:00 / Modified: 22:59:50" itemprop="dateCreated datePublished" datetime="2018-12-23T22:58:00+08:00">2018-12-23</time>
-            
-
-            
-              
-
-              
-            
-          </span>
+            </span>
 
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/12/23/2018-12-23/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/12/23/2018-12-23/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/12/23/2018-12-23/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/23/2018-12-23/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -808,156 +458,75 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>我住在2号塔楼，每天早上8点起床，8点半出门，这是我一天的开始。</p>
+          <p>我住在2号塔楼，每天早上8点起床，8点半出门，这是我一天的开始。</p>
 <p>下楼，等待我的可能是头戴花帽、和蔼又腼腆的阿姨对着我微笑着说早上好，也可能是一身黑色皮夹克、不苟言笑的叔叔沉默地看着我走出大门。</p>
 <p>出门，往南500米，来到志新路公交车站。如果是夏天，我会骑着小蓝车沿着学院路直行，感受着片刻的放松。现在到了冬天，放眼望去整个街道都被金红色的朝阳铺满，流光溢彩。我面朝东方，迎向太阳，闭眼微笑，整个人仿佛置身于一片金色的世界，那片刻恍若天堂。</p>
 <p>我常常是这样平淡地生活。</p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/17/2018-12-17/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/17/2018-12-17/" class="post-title-link" itemprop="http://yoursite.com/page/4/index.html">社交</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/17/2018-12-17/" class="post-title-link" itemprop="url">社交</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">Posted on</span>
               
 
               <time title="Created: 2018-12-17 00:10:42 / Modified: 00:50:23" itemprop="dateCreated datePublished" datetime="2018-12-17T00:10:42+08:00">2018-12-17</time>
-            
-
-            
-              
-
-              
-            
-          </span>
+            </span>
 
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/12/17/2018-12-17/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/12/17/2018-12-17/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/12/17/2018-12-17/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/17/2018-12-17/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -965,12 +534,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h3 id="产品"><a href="#产品" class="headerlink" title="产品"></a>产品</h3><p>你脑袋想的是什么，你就会看到什么。</p>
+          <h3 id="产品"><a href="#产品" class="headerlink" title="产品"></a>产品</h3><p>你脑袋想的是什么，你就会看到什么。</p>
 <p>我想到社交，于是我看到了很多社交 APP。</p>
 <p>Soul、积木、POP、Echo、ZEPETO、一罐、饭否、豆瓣，这 8 款 APP 都是社交 APP。其中前面 6 款都是这两年才有，饭否是 2007 年 5 月 12 日创立，而豆瓣则更早，是 2005 年 3 月 6 日成立。饭否和豆瓣都有超过 10 年的历史，对于互联网的历史来说，无疑这是很长的一段历史。</p>
 <p>这些 APP 有匿名、有树洞、有照片、有虚拟角色等等。</p>
@@ -989,146 +553,70 @@
 </blockquote>
 <p>也许我就是浑浑噩噩吧。</p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/10/certainty-and-life/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/10/certainty-and-life/" class="post-title-link" itemprop="http://yoursite.com/page/4/index.html">从吃饭谈确定性（确定性与服务）</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/10/certainty-and-life/" class="post-title-link" itemprop="url">从吃饭谈确定性（确定性与服务）</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">Posted on</span>
               
 
               <time title="Created: 2018-12-10 01:18:00 / Modified: 01:19:50" itemprop="dateCreated datePublished" datetime="2018-12-10T01:18:00+08:00">2018-12-10</time>
-            
-
-            
-              
-
-              
-            
-          </span>
+            </span>
 
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/12/10/certainty-and-life/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/12/10/certainty-and-life/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/12/10/certainty-and-life/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/10/certainty-and-life/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1136,12 +624,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h3 id="吃饭中的确定性"><a href="#吃饭中的确定性" class="headerlink" title="吃饭中的确定性"></a>吃饭中的确定性</h3><p>在北京生活，有特别多的活动（如各种展览、会议等等）以及各种各样的资源（博物馆、图书馆等等，还能见到很多知名人物哈哈），而这些是在小城市生活的人们根本想象不到的。</p>
+          <h3 id="吃饭中的确定性"><a href="#吃饭中的确定性" class="headerlink" title="吃饭中的确定性"></a>吃饭中的确定性</h3><p>在北京生活，有特别多的活动（如各种展览、会议等等）以及各种各样的资源（博物馆、图书馆等等，还能见到很多知名人物哈哈），而这些是在小城市生活的人们根本想象不到的。</p>
 <p>但是！空气差是真的，天气寒冷也是真的，吃饭吃不好更是真的。</p>
 <p>现在我们每天中午会去科技园的食堂吃饭，这是固定好的。因为食堂离工作地方很近，更重要的是每天都能够提供稳定口味的饭菜，不说多好吃，但至少不难吃。这家店是我们吃遍了附近的十几家后才最后确定下来。</p>
 <p>本来我们一开始并不是选择的这家，而是在一家距离工作地点走路大概八分钟的样子饭店，一家在北京还算知名的连锁饭店，叫宏状元。</p>
@@ -1156,158 +639,76 @@
 <p>大多数时候，我喜欢确定性带来的符合预期可依赖的生活。</p>
 <p>但有时，我也憧憬不确定性带来的充满未知的惊喜。</p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/Imagination-and-life/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/03/Imagination-and-life/" class="post-title-link" itemprop="http://yoursite.com/page/4/index.html">想象力与生活</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/03/Imagination-and-life/" class="post-title-link" itemprop="url">想象力与生活</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               <time title="Created: 2018-12-03 12:46:59" itemprop="dateCreated datePublished" datetime="2018-12-03T12:46:59+08:00">2018-12-03</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
+                <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2018-12-09 23:02:36" itemprop="dateModified" datetime="2018-12-09T23:02:36+08:00">2018-12-09</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/12/03/Imagination-and-life/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/12/03/Imagination-and-life/" itemprop="commentCount"></span>
-                </a>
               </span>
-            
-          
 
           
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/12/03/Imagination-and-life/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/03/Imagination-and-life/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1315,12 +716,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>最近在看李娟的写的散文《九篇雪》，写的大多是作者一家人在贫瘠且语言习俗迥异的阿勒泰地区与哈萨克族做生意时期的生活。虽然他们生活极其艰苦，但是作者表达出来确是积极乐观向上的生活态度。有感于作者把生活中的每一件小事都能写的极其生动，而自己却陷入无事可表达的地步。</p>
+          <p>最近在看李娟的写的散文《九篇雪》，写的大多是作者一家人在贫瘠且语言习俗迥异的阿勒泰地区与哈萨克族做生意时期的生活。虽然他们生活极其艰苦，但是作者表达出来确是积极乐观向上的生活态度。有感于作者把生活中的每一件小事都能写的极其生动，而自己却陷入无事可表达的地步。</p>
 <blockquote>
 <p>再说野草灰灰条，听说把嫩尖掐了用开水烫一烫凉拌起来味道也不错。不过我从没吃过，看它那个样子，那么难看，想必也不见得好吃。而我们所有人都喜欢的，莫过于亲爱的蒲公英了。蒲公英当地人又叫“苦苦菜”，苦是有些苦，不过苦得很吸引人。叶子非常细碎，我们摘回来在河水里一片一片洗净，用开水一烫，攥干，淋上酱油醋，搁进葱姜蒜，拌上粉丝海带丝，着几滴香油，另外加热少许青油，放进干辣子皮，花椒粒、芝麻，煎出香味再往菜里一泼，“滋啦啦——”香气四溢。……可是，我只不过形容一下而已。现实中哪能如此诱人呢，这深山老林的，哪来的葱姜蒜，粉丝海带丝啊？还“淋点香油”“搁点芝麻”呢——只能想象而已。</p>
 </blockquote>
@@ -1341,146 +737,70 @@
 <h3 id="图书馆照片"><a href="#图书馆照片" class="headerlink" title="图书馆照片"></a>图书馆照片</h3><p><img src="https://upload-images.jianshu.io/upload_images/1200356-c499986367fe08d5.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/1200356-1cfd9c3772cd579a.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/25/winter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/11/25/winter/" class="post-title-link" itemprop="http://yoursite.com/page/4/index.html">冬天</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/25/winter/" class="post-title-link" itemprop="url">冬天</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">Posted on</span>
               
 
               <time title="Created: 2018-11-25 22:30:00 / Modified: 22:32:31" itemprop="dateCreated datePublished" datetime="2018-11-25T22:30:00+08:00">2018-11-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
+            </span>
 
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/11/25/winter/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/11/25/winter/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/11/25/winter/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/25/winter/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1488,12 +808,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h3 id="社区电商"><a href="#社区电商" class="headerlink" title="社区电商"></a>社区电商</h3><p>最近社区电商很是火爆，主打生鲜品类（如每日一淘），高频、较少SKU、前置仓。模式类似于微商，引流有佣金。这种方式目前来看，效果挺不错的。随着线上购买生鲜的普及，进一步地引导、方便消费，这部分流量应该会有较大增长。</p>
+          <h3 id="社区电商"><a href="#社区电商" class="headerlink" title="社区电商"></a>社区电商</h3><p>最近社区电商很是火爆，主打生鲜品类（如每日一淘），高频、较少SKU、前置仓。模式类似于微商，引流有佣金。这种方式目前来看，效果挺不错的。随着线上购买生鲜的普及，进一步地引导、方便消费，这部分流量应该会有较大增长。</p>
 <h3 id="快手的带货能力"><a href="#快手的带货能力" class="headerlink" title="快手的带货能力"></a>快手的带货能力</h3><p><a href="https://mp.weixin.qq.com/s/XxV_Fr8v1clwrpcg7p-7Fw" target="_blank" rel="noopener">被快手改变命运的“迷藏卓玛”：乡土网红的崛起和老铁经济学</a>，文章讲述了家在四川甘孜藏族自治州偏远高原地区的格绒卓姆通过“短视频平台–快手”卖虫草，实现了月销售额达到了30万元的成绩，而在当地县城打工一个月的工资不过3000元。</p>
 <p>而这也离不开通信基础设施、现代物流体系对偏远地区的渗透。但从实际来看，目前的渗透应该是能有较大成长空间。截止今年6月底，中国网民达到8亿，其中移动端7.88亿，相对于全国14亿的人口，剔除掉14岁以下人口3亿，还能够有3亿以上的增量。当然，越是不发达地区，建设的成本越高，回报的周期也更长。</p>
 <p>一点也也不意外现在直播卖货的火爆，我都有点想去尝试。</p>
@@ -1502,146 +817,70 @@
 <p>但是我很怕自己成了别人的负担。</p>
 <h3 id="死神永生"><a href="#死神永生" class="headerlink" title="死神永生"></a>死神永生</h3><p>虽然自己觉得人生没有什么神奇，终会走向死亡，不用考虑有无意义。回首往事，不后悔足矣。</p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/next-definite-goal/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/11/18/next-definite-goal/" class="post-title-link" itemprop="http://yoursite.com/page/4/index.html">下一个确定的目标</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/18/next-definite-goal/" class="post-title-link" itemprop="url">下一个确定的目标</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">Posted on</span>
               
 
               <time title="Created: 2018-11-18 20:30:00 / Modified: 22:49:38" itemprop="dateCreated datePublished" datetime="2018-11-18T20:30:00+08:00">2018-11-18</time>
-            
-
-            
-              
-
-              
-            
-          </span>
+            </span>
 
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/11/18/next-definite-goal/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/11/18/next-definite-goal/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/11/18/next-definite-goal/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/18/next-definite-goal/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1649,12 +888,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h3 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h3><p>来北京刚好半年。回顾这半年，似乎没有什么值得说的，自己似乎也没有什么长进。不过与团队也相处融洽，也花不少精力做了一些基础支撑，效果也还不错。也吐槽下美拍的产品团队，感觉不是很自信。兴许他们压力大，但终究是不爽。</p>
+          <h3 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h3><p>来北京刚好半年。回顾这半年，似乎没有什么值得说的，自己似乎也没有什么长进。不过与团队也相处融洽，也花不少精力做了一些基础支撑，效果也还不错。也吐槽下美拍的产品团队，感觉不是很自信。兴许他们压力大，但终究是不爽。</p>
 <p>公司倒是有不小的变化。比腾讯更早的组织架构变革，9月初美图基于产品特性成立了各事业群，希望能够借鉴各产品成功经验以及提升跨部门沟通效率。当然也不可避免的出现了裁人。哦，上周美图美妆宣布停止运营了，可怕，这么大一个部门。。。</p>
 <p>我自己本身还是看好短视频的，毕竟视频的承载内容的能力还是很不错的。在我自己的认知范围内也是认可目前美拍的方向。也希望自己能够尽可能的贡献一份力量吧。</p>
 <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>关于工作的话，接下来会重点放在性能优化的方面，至少不能比竞品差对吧。</p>
@@ -1666,158 +900,76 @@
 <p>以后每周汇报下进度。</p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>嗯，想想就是个艰巨的任务哈哈。万事开头难呀，希望自己能够渡劫成功。</p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/RxSwift-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/03/08/RxSwift-1/" class="post-title-link" itemprop="http://yoursite.com/page/4/index.html">RxSwift（1）</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/08/RxSwift-1/" class="post-title-link" itemprop="url">RxSwift（1）</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               <time title="Created: 2018-03-08 20:30:00" itemprop="dateCreated datePublished" datetime="2018-03-08T20:30:00+08:00">2018-03-08</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
+                <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2018-11-18 22:49:44" itemprop="dateModified" datetime="2018-11-18T22:49:44+08:00">2018-11-18</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/08/RxSwift-1/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/03/08/RxSwift-1/" itemprop="commentCount"></span>
-                </a>
               </span>
-            
-          
 
           
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/03/08/RxSwift-1/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/08/RxSwift-1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1825,12 +977,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><blockquote>
+          <h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><blockquote>
 <p>The equivalence of observer pattern (<code>Observable&lt;Element&gt;</code> sequence) and normal sequences (<code>Sequence</code>) is the most important thing to understand about Rx.</p>
 <p><strong>Every <code>Observable</code> sequence is just a sequence. The key advantage for an <code>Observable</code> vs Swift’s <code>Sequence</code> is that it can also receive elements asynchronously. This is the kernel of the RxSwift, documentation from here is about ways that we expand on that idea.</strong></p>
 <ul>
@@ -1844,12 +991,15 @@
 <p>在 Rx 中，一个 sequences 可以由 0 个或多个 event，一旦 error 或者 completed 时间发生，这个 sequences 就不能再生成新的 event。</p>
 <p>这是 RxSwift 中定义的一些基本接口：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">enum Event&lt;Element&gt;  &#123;</span><br><span class="line">    case next(Element)      // next element of a sequence</span><br><span class="line">    case error(Swift.Error) // sequence failed with error</span><br><span class="line">    case completed          // sequence terminated successfully</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public protocol ObservableType : ObservableConvertibleType &#123;</span><br><span class="line">    func subscribe&lt;O: ObserverType&gt;(_ observer: O) -&gt; Disposable where O.E == E</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">protocol ObserverType &#123;</span><br><span class="line">    func on(_ event: Event&lt;Element&gt;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><p>在 RxSwift 中，<code>Observable</code> 是遵守 <code>ObservableType</code> 协议的一个具体 Class。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">extension ObservableType &#123;</span><br><span class="line">    public static func create(_ subscribe: @escaping (AnyObserver&lt;E&gt;) -&gt; Disposable) -&gt; Observable&lt;E&gt; &#123;</span><br><span class="line">        return AnonymousObservable(subscribe)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>常用的 <code>create</code> 方法是定义在 <code>ObservableType</code> 协议的 extension 中，并有默认的实现，返回一个 <code>AnonymousObservable</code> 对象。</p>
 <p><code>AnonymousObservable</code> 是一个 继承 <code>Producer</code>，而 Producer 继承自 <code>Observable</code>。  </p>
 <p>看如下代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">let sequence = Observable&lt;String&gt;.create(&#123; (observer) -&gt; Disposable in</span><br><span class="line">        observer.on(.next(&quot;hello world!&quot;))</span><br><span class="line">        observer.on(.completed)</span><br><span class="line">        </span><br><span class="line">        return Disposables.create()</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    // 方案1</span><br><span class="line">    sequence.subscribe(&#123; (event) in</span><br><span class="line">        print(event)</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    // 方案2</span><br><span class="line">    let observer = AnyObserver&lt;String&gt;.init(eventHandler: &#123; (event) in</span><br><span class="line">        print(event)</span><br><span class="line">    &#125;)</span><br><span class="line">    sequence.subscribe(observer)</span><br></pre></td></tr></table></figure>
+
 <p>上面两个方案是等价的，因为方案1传入的闭包最终会封装成为一个 Observer。并且只要调用 Observable 的 subscribe 方法，最终都会回到方案2的方式，这就对应了 ObservableType protocol。</p>
 <p>当然这里 Observable 的 create 方法传入的闭包中的 observer 并不是我们调用 subscribe 方法传入的 observer。RxSwift 具体实现中，会对我们传入的 observer 再进行一些封装，一般是由 Sink 的子类作为容器。这样就能方便对传入的 event 进行一些处理及操作。</p>
 <h1 id="数据（Event）流动"><a href="#数据（Event）流动" class="headerlink" title="数据（Event）流动"></a>数据（Event）流动</h1><p>我们调用 Observable 的 subscribe 方法，就打开了数据的闸门，数据就自顶向下开始流动，中间我们可以调用例如 map、flatMap、concat 等操作符来处理数据。</p>
@@ -1866,161 +1016,83 @@
 </ol>
 <p>需要特别说明的是第5步，一个 event 并不总是从最顶部的 Observabel 生成。例如使用了 flatMap 操作符，那么 event 可能是直接从 flatMap 方法返回的 Observabel 生成的，但是第一个 event 必定是从最顶部生成。下面是一个例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">let disposeBag = DisposeBag()</span><br><span class="line">    </span><br><span class="line">    struct Player &#123;</span><br><span class="line">        var score: Variable&lt;Int&gt;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    let 👦🏻 = Player(score: Variable(80))</span><br><span class="line">    let 👧🏼 = Player(score: Variable(90))</span><br><span class="line">    </span><br><span class="line">    let player = Variable(👦🏻)</span><br><span class="line">    </span><br><span class="line">    // 注意 flatMap 方法</span><br><span class="line">    player.asObservable()</span><br><span class="line">        .flatMap &#123; $0.score.asObservable() &#125; // Change flatMap to flatMapLatest and observe change in printed output</span><br><span class="line">        .subscribe(onNext: &#123; print($0) &#125;)</span><br><span class="line">        .disposed(by: disposeBag)</span><br><span class="line">    </span><br><span class="line">    👦🏻.score.value = 85</span><br><span class="line">    </span><br><span class="line">    player.value = 👧🏼</span><br><span class="line">    </span><br><span class="line">    👦🏻.score.value = 95 // Will be printed when using flatMap, but will not be printed when using flatMapLatest</span><br><span class="line">    </span><br><span class="line">    👧🏼.score.value = 100</span><br></pre></td></tr></table></figure>
+
 <p>输出：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">80</span><br><span class="line">85</span><br><span class="line">90</span><br><span class="line">95</span><br><span class="line">100</span><br></pre></td></tr></table></figure>
 
-          
-        
+
+
+
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/04/problems-and-solutions-for-iOS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/11/04/problems-and-solutions-for-iOS/" class="post-title-link" itemprop="http://yoursite.com/page/4/index.html">开发过程中遇到问题与解决方案</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/11/04/problems-and-solutions-for-iOS/" class="post-title-link" itemprop="url">开发过程中遇到问题与解决方案</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               <time title="Created: 2017-11-04 21:33:45" itemprop="dateCreated datePublished" datetime="2017-11-04T21:33:45+08:00">2017-11-04</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
+                <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2018-11-18 22:47:18" itemprop="dateModified" datetime="2018-11-18T22:47:18+08:00">2018-11-18</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/04/problems-and-solutions-for-iOS/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/04/problems-and-solutions-for-iOS/" itemprop="commentCount"></span>
-                </a>
               </span>
-            
-          
 
           
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2017/11/04/problems-and-solutions-for-iOS/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/11/04/problems-and-solutions-for-iOS/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -2028,12 +1100,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>在 iOS 开发的过程中，我们需要做的事情一般可以归类于：</p>
+          <p>在 iOS 开发的过程中，我们需要做的事情一般可以归类于：</p>
 <ul>
 <li>用户界面的实现以及跳转</li>
 <li>网络数据的请求与处理</li>
@@ -2048,6 +1115,7 @@
 <h3 id="使用-UITableView、UICollectionView-的问题与解决方案"><a href="#使用-UITableView、UICollectionView-的问题与解决方案" class="headerlink" title="使用 UITableView、UICollectionView 的问题与解决方案"></a>使用 UITableView、UICollectionView 的问题与解决方案</h3><p>在使用这两个控件的过程中，我们需要一般会实现其的 delegate 与 dataSource。</p>
 <p>在使用 tableView 的时候，我们一般会有如下代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section</span><br><span class="line">&#123;</span><br><span class="line">    return numberOfItems;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (UITableViewCell *)tableView:(UITableView *)tableView</span><br><span class="line">         cellForRowAtIndexPath:(NSIndexPath *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    if (indexPath.section == 0) &#123;</span><br><span class="line">        return A_Cell;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        return B_cell;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tableView -&gt; section -&gt; cell</span><br></pre></td></tr></table></figure>
+
 <p>上面的代码会判断 section 来返回不同的 cell，而在实际情况中逻辑会比上面复杂。 假如业务需求变化了，需要更改 sectin 的位置，那么我们需要修改 tableView:cellForRowAtIndexPath: 方法的逻辑判断。当业务复杂的时候，这种修改会变得非常困难。</p>
 <p>为了解决这个问题，于是我们参考了 IGListKit，他基于 UICollectionView 实现，基本思想是把每个 section 的管理交给 IGListSectionController，然后 IGListSectionController 再管理自己的每个 Item。并且实现了：</p>
 <ul>
@@ -2070,6 +1138,7 @@
 <p>为了应对这些问题，我们引入了 YTKNetwork，一个请求相当于一个资源，很好的解决了上面所说的部分问题，并且针对防劫持，我们引入了 HTTPDNS，并且由于不需要再次进行域名解析，相应的加快了请求访问速度。</p>
 <p>而我们最终需要的数据一般都是 model，因此在基础上增加了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (Class)responseClass;</span><br><span class="line"></span><br><span class="line">- (id)parse;</span><br></pre></td></tr></table></figure>
+
 <p>requsest 子类可以自行实现这两个方法，这样就基本解决了数据解析的问题。</p>
 <p>值得一提的是，我们根据 YTKNetwork 的 accessory 机制实现了自动空页面、上下拉刷新等</p>
 <h3 id="用户数据的缓存与上传"><a href="#用户数据的缓存与上传" class="headerlink" title="用户数据的缓存与上传"></a>用户数据的缓存与上传</h3><h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><p>用户数据缓存方面我们使用了 UserDefaults 以及 sqlite</p>
@@ -2114,47 +1183,21 @@
 <li>持续迭代：我们使用 fastlane + jenkins + dingtalk，做到了 代码提交 -&gt; 自动打包 -&gt; 发送信息通知测试。</li>
 </ul>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
-  </section>
+  </div>
 
   
   <nav class="pagination">
@@ -2167,145 +1210,102 @@
           
 
         </div>
-        
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
-    
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
-      
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Tpphha</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tpphha</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
           
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">41</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="/mailto:tpphha@gmail.com" title="E-Mail &amp;rarr; mailto:tpphha@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
 
-              
 
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">5</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
 
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="mailto:tpphha@gmail.com" title="E-Mail &rarr; mailto:tpphha@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-
-      
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">  <a href="http://www.miitbeian.gov.cn" rel="noopener" target="_blank">粤ICP备17120911号 </a>&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备17120911号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Tpphha</span>
-
-  
-
-  
 </div>
-
-
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.0</div>
-
-
-
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
-
-
-
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.5.0
+  </div>
 
         
+
+
+
+
 
 
 
@@ -2317,140 +1317,49 @@
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-	
-    
-
-    
   </div>
 
   
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://tpphha.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
   }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
-
-
-
-  
-
-  
-    <script id="dsq-count-scr" src="https://tpphha.disqus.com/count.js" async></script>
-  
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>

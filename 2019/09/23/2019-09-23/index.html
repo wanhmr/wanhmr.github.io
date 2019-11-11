@@ -1,158 +1,94 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Tpphha" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '6.5.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
-    fastclick: false,
+    mediumzoom: false,
     lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    pangu: false,
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
   };
 </script>
-
-
-  
-
-
-
 
   <meta name="description" content="由于团队希望项目能够去 CoreData 化，而以往状态同步都是依赖于 CoreData 的 NSFetchedResultsController。因此去 CoreData 则必须寻找一种替代方案来进行状态同步。 NotificationCenter状态同步实际是一对多的场景，也就是一个事件可以被多个观察者监听到。而苹果的系统框架自带的 NotificationCenter 正是用来适配这种场景，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 中跨页面状态同步方案比较">
-<meta property="og:url" content="http://yoursite.com/2019/09/23/2019-09-23/index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;23&#x2F;2019-09-23&#x2F;index.html">
 <meta property="og:site_name" content="Tpphha">
 <meta property="og:description" content="由于团队希望项目能够去 CoreData 化，而以往状态同步都是依赖于 CoreData 的 NSFetchedResultsController。因此去 CoreData 则必须寻找一种替代方案来进行状态同步。 NotificationCenter状态同步实际是一对多的场景，也就是一个事件可以被多个观察者监听到。而苹果的系统框架自带的 NotificationCenter 正是用来适配这种场景，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/9/23/16d5ec6d7641b705?w=1280&h=479&f=png&s=28898">
+<meta property="og:image" content="https:&#x2F;&#x2F;user-gold-cdn.xitu.io&#x2F;2019&#x2F;9&#x2F;23&#x2F;16d5ec6d7641b705?w=1280&amp;h=479&amp;f=png&amp;s=28898">
 <meta property="og:updated_time" content="2019-10-20T15:20:52.977Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS 中跨页面状态同步方案比较">
-<meta name="twitter:description" content="由于团队希望项目能够去 CoreData 化，而以往状态同步都是依赖于 CoreData 的 NSFetchedResultsController。因此去 CoreData 则必须寻找一种替代方案来进行状态同步。 NotificationCenter状态同步实际是一对多的场景，也就是一个事件可以被多个观察者监听到。而苹果的系统框架自带的 NotificationCenter 正是用来适配这种场景，">
-<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2019/9/23/16d5ec6d7641b705?w=1280&h=479&f=png&s=28898">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;user-gold-cdn.xitu.io&#x2F;2019&#x2F;9&#x2F;23&#x2F;16d5ec6d7641b705?w=1280&amp;h=479&amp;f=png&amp;s=28898">
+
+<link rel="canonical" href="http://yoursite.com/2019/09/23/2019-09-23/">
 
 
-
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2019/09/23/2019-09-23/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
   };
 </script>
 
   <title>iOS 中跨页面状态同步方案比较 | Tpphha</title>
   
-
-
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117510171-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-117510171-1');
-</script>
-
-
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117510171-1"></script>
+    <script>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-117510171-1');
+      }
+    </script>
 
 
 
@@ -160,293 +96,162 @@
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Tpphha</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-commonweal">
+        <li class="menu-item menu-item-commonweal">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/404.html" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />Commonweal 404</a>
+    <a href="/404.html" rel="section"><i class="fa fa-fw fa-heartbeat"></i>Commonweal 404</a>
 
   </li>
+  </ul>
 
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
 </nav>
-
-
-
-  
-
-
-
 </div>
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-
+  <div class="posts-expand">
+      
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/23/2019-09-23/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">iOS 中跨页面状态同步方案比较
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          iOS 中跨页面状态同步方案比较
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               <time title="Created: 2019-09-23 23:20:19" itemprop="dateCreated datePublished" datetime="2019-09-23T23:20:19+08:00">2019-09-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
+                <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2019-10-20 23:20:52" itemprop="dateModified" datetime="2019-10-20T23:20:52+08:00">2019-10-20</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/23/2019-09-23/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/09/23/2019-09-23/" itemprop="commentCount"></span>
-                </a>
               </span>
-            
-          
 
           
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2019/09/23/2019-09-23/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/23/2019-09-23/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-      
 
       
         <p>由于团队希望项目能够去 CoreData 化，而以往状态同步都是依赖于 CoreData 的 <code>NSFetchedResultsController</code>。因此去 CoreData 则必须寻找一种替代方案来进行状态同步。</p>
@@ -455,77 +260,97 @@
 <li>定义通知名字，以及需要额外传递信息的 key</li>
 <li>基于 target-action 的方式注册通知</li>
 </ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">addObserver</span><span class="params">(<span class="number">_</span> observer: Any, selector aSelector: Selector, name aName: NSNotification.Name?, object anObject: Any?)</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">addObserver</span><span class="params">(<span class="number">_</span> observer: <span class="keyword">Any</span>, selector aSelector: Selector, name aName: NSNotification.Name?, object anObject: <span class="keyword">Any</span>?)</span></span></span><br></pre></td></tr></table></figure>
+
 <ol start="3">
 <li>实现监听通知的方法</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func onReceivedNotification(note: NSNotification)</span><br></pre></td></tr></table></figure>
+
 <ol start="4">
 <li>发送通知，可以传递发送通知的对象（object）以及一些额外的信息（userInfo）</li>
 </ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">post</span><span class="params">(name aName: NSNotification.Name, object anObject: Any?, userInfo aUserInfo: [AnyHashable : Any]? = <span class="literal">nil</span>)</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">post</span><span class="params">(name aName: NSNotification.Name, object anObject: <span class="keyword">Any</span>?, userInfo aUserInfo: [AnyHashable : <span class="keyword">Any</span>]? = <span class="literal">nil</span>)</span></span></span><br></pre></td></tr></table></figure>
+
+
 <ol start="5">
 <li>移除注册的通知</li>
 </ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">removeObserver</span><span class="params">(<span class="number">_</span> observer: Any, name aName: NSNotification.Name?, object anObject: Any?)</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">removeObserver</span><span class="params">(<span class="number">_</span> observer: <span class="keyword">Any</span>, name aName: NSNotification.Name?, object anObject: <span class="keyword">Any</span>?)</span></span></span><br></pre></td></tr></table></figure>
+
 <p>当然 NotificationCenter 也提供了一种更加便利基于 block 的方式注册监听通知，其将 2，3 两个步骤整合为 1 个步骤。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">addObserver</span><span class="params">(forName name: NSNotification.Name?, object obj: Any?, queue: OperationQueue?, using block: @escaping <span class="params">(Notification)</span></span></span> -&gt; <span class="type">Void</span>) -&gt; <span class="type">NSObjectProtocol</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">addObserver</span><span class="params">(forName name: NSNotification.Name?, object obj: <span class="keyword">Any</span>?, queue: OperationQueue?, using block: @escaping <span class="params">(Notification)</span></span></span> -&gt; <span class="type">Void</span>) -&gt; <span class="type">NSObjectProtocol</span></span><br></pre></td></tr></table></figure>
+
 <p>整体流程很清晰，简单易用，但是却有一个严重的缺点 —— 弱类型。我们接收到的是一个 <code>NSNotification</code> 对象。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">NSNotification</span> : <span class="title">NSObject</span>, <span class="title">NSCopying</span>, <span class="title">NSCoding</span> </span>&#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> name: <span class="type">NSNotification</span>.<span class="type">Name</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> object: <span class="type">Any</span>? &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> userInfo: [<span class="type">AnyHashable</span> : <span class="type">Any</span>]? &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">NSNotification</span> : <span class="title">NSObject</span>, <span class="title">NSCopying</span>, <span class="title">NSCoding</span> </span>&#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> name: <span class="type">NSNotification</span>.<span class="type">Name</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> object: <span class="type">Any?</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> userInfo: [<span class="type">AnyHashable</span> : <span class="type">Any</span>]? &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>假设我们需要传递一个关注状态改变的信息，那么需要包含关注更改后的状态以及被关注者的 ID。那么我们需要从 userInfo 中取出所需要的值：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> following = notification.userInfo?[<span class="string">"FollowingKey"</span>] <span class="keyword">as</span>! <span class="type">NSNumber</span></span><br><span class="line"><span class="keyword">let</span> userID = notification.userInfo?[<span class="string">"UserIDKey"</span>] <span class="keyword">as</span>! <span class="type">NSNumber</span>;</span><br></pre></td></tr></table></figure>
+
 <p>也就是说接收通知的一方一般需要要查看文档才知道怎样从 userInfo 取值，取的值的类型又是什么。这对于使用是极为不方便的。</p>
 <h3 id="SwiftNotificationCenter"><a href="#SwiftNotificationCenter" class="headerlink" title="SwiftNotificationCenter"></a>SwiftNotificationCenter</h3><p><a href="https://github.com/100mango/SwiftNotificationCenter" target="_blank" rel="noopener">SwiftNotificationCenter</a> 是一种面向协议的通知中心方案。使用方式如下：</p>
 <ol>
 <li>定义协议</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">FollowingChanged</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">followingDidChange</span><span class="params">(following: Bool, userID: NSNumber)</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li>基于协议注册通知</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Broadcaster</span>.register(<span class="type">FollowingChanged</span>.<span class="keyword">self</span>, observer: observer)</span><br></pre></td></tr></table></figure>
+
 <ol start="3">
 <li>实现协议方法</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ViewController</span>: <span class="title">FollowingChanged</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">followingDidChange</span><span class="params">(following: Bool, userID: NSNumber)</span></span> &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ol start="4">
 <li>发送通知</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Broadcaster</span>.notify(<span class="type">FollowingChanged</span>.<span class="keyword">self</span>) &#123;</span><br><span class="line">    $<span class="number">0</span>.followingDidChange(following, userID)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ol start="5">
 <li>移除注册的通知</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Broadcaster</span>.unregister(<span class="type">FollowingChanged</span>.<span class="keyword">self</span>, observer: observer)</span><br></pre></td></tr></table></figure>
+
 <p>我们可以看到，其基于协议的方式解决了弱类型的问题，但其也存在着扩展性较差的问题。 </p>
 <p>依然是关注改变的场景，假如随着业务的发展，有的地方需要知道关注后是否为互关的状态，那么又需要增加一个字段来标识。因此我们需要修改协议，增加参数 followingEachOther，且由于它不是必须传递的参数，因此是 optional 类型。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">protocol FollowingChanged &#123;</span><br><span class="line">    func followingDidChange(following: Bool, userID: NSNumber, followingEachOther: NSNumber?)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>如果在该类型通知被广泛应用的场景，那么需要修改的地方就尤其多了。这显然也是难以接受的。</p>
 <h3 id="EventBus"><a href="#EventBus" class="headerlink" title="EventBus"></a>EventBus</h3><p>EventBus 在安卓中被广泛地应用，其流程如下图所示：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/9/23/16d5ec6d7641b705?w=1280&amp;h=479&amp;f=png&amp;s=28898" alt="EventBus-Publish-Subscribe"><br>图片来源：<a href="https://github.com/greenrobot/EventBus" target="_blank" rel="noopener">EventBus</a></p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/9/23/16d5ec6d7641b705?w=1280&h=479&f=png&s=28898" alt="EventBus-Publish-Subscribe"><br>图片来源：<a href="https://github.com/greenrobot/EventBus" target="_blank" rel="noopener">EventBus</a></p>
 <p>使用方式如下：</p>
 <ol>
 <li>定义事件</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">TPFollowingChangedEvent</span>: <span class="title">NSObject</span>, <span class="title">TPEvent</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> following: <span class="type">Bool</span></span><br><span class="line">   		<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> userID: <span class="type">NSNumber</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li>注册事件</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">TPEventBus</span>&lt;<span class="type">TPFollowingChangedEvent</span>&gt;.shared.register(eventType: <span class="type">TPFollowingChangedEvent</span>.<span class="keyword">self</span>, subscriber: <span class="keyword">self</span>, selector: #selector(onEvent(event:object:)))</span><br></pre></td></tr></table></figure>
+
 <ol start="3">
 <li>实现监听事件的方法</li>
 </ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">onEvent</span><span class="params">(event: TPFollowingChangedEvent, object: Any?)</span></span> &#123;</span><br><span class="line">    	<span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">onEvent</span><span class="params">(event: TPFollowingChangedEvent, object: <span class="keyword">Any</span>?)</span></span> &#123;</span><br><span class="line">    	<span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ol start="4">
 <li>发送事件</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">TPEventBus</span>.shared.post(event: event, object: <span class="keyword">self</span>)</span><br></pre></td></tr></table></figure>
+
 <ol start="5">
 <li>移除事件的注册</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">TPEventBus</span>&lt;<span class="type">TPFollowingChangedEvent</span>&gt;.shared.unregister(eventType: <span class="type">TPFollowingChangedEvent</span>.<span class="keyword">self</span>, subscriber: <span class="keyword">self</span>)</span><br></pre></td></tr></table></figure>
+
 <p>我们可以看到， EventBus 也是强类型的。</p>
 <p>假如依然是关注的场景，需要知道互关的状态，那么我们只需要在 TPFollowingChangedEvent 中增加 followingEachOther 属性即可。如下所示：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TPFollowingChangedEvent</span>: <span class="title">NSObject</span>, <span class="title">TPEvent</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> following: <span class="type">Bool</span></span><br><span class="line">   		<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> userID: <span class="type">NSNumber</span></span><br><span class="line">    	<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> followingEachOther: <span class="type">NSNumber</span>?</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TPFollowingChangedEvent</span>: <span class="title">NSObject</span>, <span class="title">TPEvent</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> following: <span class="type">Bool</span></span><br><span class="line">   		<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> userID: <span class="type">NSNumber</span></span><br><span class="line">    	<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> followingEachOther: <span class="type">NSNumber?</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>因此使用 EventBus 实现了以下需求：</p>
 <ul>
 <li>强类型</li>
@@ -533,250 +358,155 @@
 </ul>
 <p>EventBus 同 NotificationCenter 都是基于 target-action 的方案，但是我们不难将其扩展为支持 block 监听的方式，并且同样让它也能够自动移除事件的注册。类似于如下的使用方式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TPEventBus&lt;TPFollowingChangedEvent&gt;.shared.subscribe(eventType: TPFollowingChangedEvent.self).forObject(self).onQueue(OperationQueue.main).onEvent &#123; (event, object) in</span><br><span class="line">     // do something</span><br><span class="line">&#125;.disposed(by: self.tp_eventTokenBag)</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>这里我实现了一个小巧但比较全面的 EventBus 供参考：<a href="https://github.com/wanhmr/TPEventBus" target="_blank" rel="noopener">TPEventBus</a>。</p>
 </blockquote>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>我们可以看到，一对多场景中观察者模式的应用流程都大同小异，但是如何更好用确是值得深思的。当然以上也只是我在一些使用场景上的思考，肯定会欠缺考虑，欢迎拍砖😊。</p>
 
-      
     </div>
 
     
-
-    
-    
-    
-
-    
-
-    
-       
     
     
 
-    
+      <footer class="post-footer">
 
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/09/02/2019-09-02/" rel="next" title="2019-09-02">
-                <i class="fa fa-chevron-left"></i> 2019-09-02
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/20/2019-10-20/" rel="prev" title="2019-10-20">
-                2019-10-20 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-  </div>
-
-
-          </div>
-          
-
-  
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-      </div>
-    </div>
-
-  
-
-
-
-        </div>
         
-          
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/09/02/2019-09-02/" rel="next" title="2019-09-02">
+                  <i class="fa fa-chevron-left"></i> 2019-09-02
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/10/20/2019-10-20/" rel="prev" title="2019-10-20">
+                  2019-10-20 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  
+  
+
   </div>
 
-  <aside id="sidebar" class="sidebar">
+
+          </div>
+          
     
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Tpphha</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">41</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">5</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="mailto:tpphha@gmail.com" title="E-Mail &rarr; mailto:tpphha@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#NotificationCenter"><span class="nav-number">1.</span> <span class="nav-text">NotificationCenter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SwiftNotificationCenter"><span class="nav-number">2.</span> <span class="nav-text">SwiftNotificationCenter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EventBus"><span class="nav-number">3.</span> <span class="nav-text">EventBus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">4.</span> <span class="nav-text">最后</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#NotificationCenter"><span class="nav-number">1.</span> <span class="nav-text">NotificationCenter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SwiftNotificationCenter"><span class="nav-number">2.</span> <span class="nav-text">SwiftNotificationCenter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EventBus"><span class="nav-number">3.</span> <span class="nav-text">EventBus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">4.</span> <span class="nav-text">最后</span></a></li></ol></div>
+      </div>
       <!--/noindex-->
-      
 
-      
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tpphha</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="/mailto:tpphha@gmail.com" title="E-Mail &amp;rarr; mailto:tpphha@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">  <a href="http://www.miitbeian.gov.cn" rel="noopener" target="_blank">粤ICP备17120911号 </a>&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备17120911号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Tpphha</span>
-
-  
-
-  
 </div>
-
-
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.0</div>
-
-
-
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
-
-
-
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.5.0
+  </div>
 
         
+
+
+
+
 
 
 
@@ -788,161 +518,70 @@
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-	
-    
-
-    
   </div>
 
   
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://tpphha.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
   }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
-
-
-
-  
-
-  
-    <script id="dsq-count-scr" src="https://tpphha.disqus.com/count.js" async></script>
-  
-
-  
-    <script type="text/javascript">
-      var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2019/09/23/2019-09-23/';
-        this.page.identifier = '2019/09/23/2019-09-23/';
-        this.page.title = 'iOS 中跨页面状态同步方案比较';
-        };
-      function loadComments () {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://tpphha.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      }
-      
-        loadComments();
-      
-    </script>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "http://yoursite.com/2019/09/23/2019-09-23/",
+            identifier: "2019/09/23/2019-09-23/",
+            title: "iOS 中跨页面状态同步方案比较"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tpphha.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    window.addEventListener('load', loadComments, false);
+</script>
 
 </body>
 </html>

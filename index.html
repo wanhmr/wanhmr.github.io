@@ -1,152 +1,89 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Tpphha" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '6.5.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
-    fastclick: false,
+    mediumzoom: false,
     lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    pangu: false,
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
   };
 </script>
 
-
-  
-
-
-
-
   <meta property="og:type" content="website">
 <meta property="og:title" content="Tpphha">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
 <meta property="og:site_name" content="Tpphha">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tpphha">
+
+<link rel="canonical" href="http://yoursite.com/">
 
 
-
-
-
-
-  <link rel="canonical" href="http://yoursite.com/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
   };
 </script>
 
   <title>Tpphha</title>
   
-
-
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117510171-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-117510171-1');
-</script>
-
-
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117510171-1"></script>
+    <script>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-117510171-1');
+      }
+    </script>
 
 
 
@@ -154,277 +91,152 @@
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Tpphha</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home menu-item-active">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-commonweal">
+        <li class="menu-item menu-item-commonweal">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/404.html" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />Commonweal 404</a>
+    <a href="/404.html" rel="section"><i class="fa fa-fw fa-heartbeat"></i>Commonweal 404</a>
 
   </li>
+  </ul>
 
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
 </nav>
-
-
-
-  
-
-
-
 </div>
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content">
             
-  <section id="posts" class="posts-expand">
-    
-      
 
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/11/2019-11-11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/11/11/2019-11-11/" class="post-title-link" itemprop="http://yoursite.com/index.html">2019-11-11</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/11/2019-11-11/" class="post-title-link" itemprop="url">2019-11-11</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">Posted on</span>
               
 
               <time title="Created: 2019-11-11 08:04:55 / Modified: 22:03:26" itemprop="dateCreated datePublished" datetime="2019-11-11T08:04:55+08:00">2019-11-11</time>
-            
-
-            
-              
-
-              
-            
-          </span>
+            </span>
 
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/11/11/2019-11-11/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/11/11/2019-11-11/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2019/11/11/2019-11-11/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/11/11/2019-11-11/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -432,158 +244,77 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h3 id="沟通"><a href="#沟通" class="headerlink" title="沟通"></a>沟通</h3><p>上周五晚上由于我和她的一些的问题，聊到了接近凌晨三点。为什么自己的心态是如此容易爆炸？说好的心态平和呢？说好的要学会沟通呢？</p>
+          <h3 id="沟通"><a href="#沟通" class="headerlink" title="沟通"></a>沟通</h3><p>上周五晚上由于我和她的一些的问题，聊到了接近凌晨三点。为什么自己的心态是如此容易爆炸？说好的心态平和呢？说好的要学会沟通呢？</p>
 <p>沟通能够让我们关系融洽、利益最大化。而沟通最重要的技巧是倾听，我为自己一直以来的行为羞愧。</p>
 <p>How stupid I was.</p>
 <h3 id="平等"><a href="#平等" class="headerlink" title="平等"></a>平等</h3><p>该如何去喜欢一个人呢？或者说，该如何去经营一段亲密关系呢？这对于我来说真是一件无比困难的事情。那天她说希望我们的关系在相处的过程中是平等的，要我不用太刻意、太做作。我深以为然，自己也是期望关系是对等的，但我还是不会应该怎么去做啊！！！或许，我首先应该做到不刻意、不做作地去喜欢。</p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>逝者如斯夫，不舍昼夜。我不知道多久才会消亡这份恐惧。</p>
 <p>让我们热爱生活，让我们拥有闪耀的灵魂之光。</p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/05/2019-11-05/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/11/05/2019-11-05/" class="post-title-link" itemprop="http://yoursite.com/index.html">2019-11-05</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/05/2019-11-05/" class="post-title-link" itemprop="url">2019-11-05</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">Posted on</span>
               
 
               <time title="Created: 2019-11-05 00:15:52 / Modified: 00:47:48" itemprop="dateCreated datePublished" datetime="2019-11-05T00:15:52+08:00">2019-11-05</time>
-            
-
-            
-              
-
-              
-            
-          </span>
+            </span>
 
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/11/05/2019-11-05/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/11/05/2019-11-05/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2019/11/05/2019-11-05/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/11/05/2019-11-05/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -591,12 +322,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>又又又失信了。</p>
+          <p>又又又失信了。</p>
 <p>本来说昨天（突然发现现在已经是前天）会写写工作相关和未来计划，但是又没有完成。</p>
 <h4 id="罗永浩"><a href="#罗永浩" class="headerlink" title="罗永浩"></a>罗永浩</h4><p>罗永浩被列为了“失信执行人”，然后火了，罗老师后面写了一封公开信为自己说明和开脱，这封信也火了。当然，对于罗老师来说，不火才不正常。</p>
 <p>很多人同情罗永浩，同时也有很多人持否认态度，这才是生活的有意思之处。不可否认，其实我们是容易被说服的，或者说被欺骗到的。保持冷静客观，再怎么强调都不过分，我依然是做得很差劲。</p>
@@ -605,146 +331,70 @@
 <p>很佩服她的经历及见解，也感谢她的分享，更感慨于她所搭建的知识体系。或许我们也能说点什么，但是真的没那么清晰与肯定。成体系的知识，完整的输出，说服自己，真是太难了。</p>
 <h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>明天又是美好的一天！加油！</p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/02/2019-11-02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/11/02/2019-11-02/" class="post-title-link" itemprop="http://yoursite.com/index.html">人、机器人、外星人</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/02/2019-11-02/" class="post-title-link" itemprop="url">人、机器人、外星人</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">Posted on</span>
               
 
               <time title="Created: 2019-11-02 11:07:53 / Modified: 11:35:19" itemprop="dateCreated datePublished" datetime="2019-11-02T11:07:53+08:00">2019-11-02</time>
-            
-
-            
-              
-
-              
-            
-          </span>
+            </span>
 
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/11/02/2019-11-02/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/11/02/2019-11-02/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2019/11/02/2019-11-02/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/11/02/2019-11-02/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -752,12 +402,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>有一天和树文讨论了一个问题，如果有一个人能够永生，而且整个世界都只有他一个人，他的周围有许许多多的机器人来服务于他。</p>
+          <p>有一天和树文讨论了一个问题，如果有一个人能够永生，而且整个世界都只有他一个人，他的周围有许许多多的机器人来服务于他。</p>
 <p>『就算他能够永生，但是又是什么支撑他活下去呢？不会觉得无聊吗？不会觉得没有意义吗？』</p>
 <p>『当他觉得无聊、不开心等负面情绪的时候，机器人会使用某些物质让他消除这些负面影响。这样你有没有觉得像是机器人操纵了人？』</p>
 <p>『如果机器人是无意识的，那也就不存在操纵这个概念吧。而如果机器人具有了意识，拥有类似于人类的智慧，那机器人与人的区别又在哪呢？』</p>
@@ -769,158 +414,76 @@
 <p>明天我会写写一些工作相关的东西以及未来的不完全计划。</p>
 <p>总之，虽然我比较任性，但是上帝你要保佑我！</p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/20/2019-10-20/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/10/20/2019-10-20/" class="post-title-link" itemprop="http://yoursite.com/index.html">2019-10-20</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/20/2019-10-20/" class="post-title-link" itemprop="url">2019-10-20</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               <time title="Created: 2019-10-20 23:21:53" itemprop="dateCreated datePublished" datetime="2019-10-20T23:21:53+08:00">2019-10-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
+                <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2019-10-21 08:09:11" itemprop="dateModified" datetime="2019-10-21T08:09:11+08:00">2019-10-21</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/10/20/2019-10-20/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/10/20/2019-10-20/" itemprop="commentCount"></span>
-                </a>
               </span>
-            
-          
 
           
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2019/10/20/2019-10-20/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/20/2019-10-20/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -928,169 +491,82 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>秋意渐浓，树叶慢慢地黄了起来，景色也渐渐地浓郁了起来，天气也寒冷了起来，出门赏秋的人却络绎不绝。都说北京的秋最美，我们大抵也不会辜负。</p>
+          <p>秋意渐浓，树叶慢慢地黄了起来，景色也渐渐地浓郁了起来，天气也寒冷了起来，出门赏秋的人却络绎不绝。都说北京的秋最美，我们大抵也不会辜负。</p>
 <p>但是我真的是怕冷，睡觉时两床被子也不能说完全满足了我，在办公室下半身的寒意更让我瑟瑟发抖。</p>
 <p>我不知道我应该怎么去面对接下来的惶恐，忧愁与快乐相互交织，恐惧却一直如影随形。此刻心情、此刻感受、此刻我想、此刻我要，人生一瞬，留住此刻。</p>
 <p>慢下来，静下来，看看远方，此刻，现在，未来还在我们手中。</p>
 <p>如果可以，热爱 something 真让人热泪盈眶。</p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/23/2019-09-23/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/09/23/2019-09-23/" class="post-title-link" itemprop="http://yoursite.com/index.html">iOS 中跨页面状态同步方案比较</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/23/2019-09-23/" class="post-title-link" itemprop="url">iOS 中跨页面状态同步方案比较</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               <time title="Created: 2019-09-23 23:20:19" itemprop="dateCreated datePublished" datetime="2019-09-23T23:20:19+08:00">2019-09-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
+                <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2019-10-20 23:20:52" itemprop="dateModified" datetime="2019-10-20T23:20:52+08:00">2019-10-20</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/23/2019-09-23/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/09/23/2019-09-23/" itemprop="commentCount"></span>
-                </a>
               </span>
-            
-          
 
           
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2019/09/23/2019-09-23/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/23/2019-09-23/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1098,88 +574,103 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>由于团队希望项目能够去 CoreData 化，而以往状态同步都是依赖于 CoreData 的 <code>NSFetchedResultsController</code>。因此去 CoreData 则必须寻找一种替代方案来进行状态同步。</p>
+          <p>由于团队希望项目能够去 CoreData 化，而以往状态同步都是依赖于 CoreData 的 <code>NSFetchedResultsController</code>。因此去 CoreData 则必须寻找一种替代方案来进行状态同步。</p>
 <h3 id="NotificationCenter"><a href="#NotificationCenter" class="headerlink" title="NotificationCenter"></a>NotificationCenter</h3><p>状态同步实际是一对多的场景，也就是一个事件可以被多个观察者监听到。而苹果的系统框架自带的 NotificationCenter 正是用来适配这种场景，并且其也是被系统框架本身及我们开发者大面积使用的。用法如下：</p>
 <ol>
 <li>定义通知名字，以及需要额外传递信息的 key</li>
 <li>基于 target-action 的方式注册通知</li>
 </ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">addObserver</span><span class="params">(<span class="number">_</span> observer: Any, selector aSelector: Selector, name aName: NSNotification.Name?, object anObject: Any?)</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">addObserver</span><span class="params">(<span class="number">_</span> observer: <span class="keyword">Any</span>, selector aSelector: Selector, name aName: NSNotification.Name?, object anObject: <span class="keyword">Any</span>?)</span></span></span><br></pre></td></tr></table></figure>
+
 <ol start="3">
 <li>实现监听通知的方法</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func onReceivedNotification(note: NSNotification)</span><br></pre></td></tr></table></figure>
+
 <ol start="4">
 <li>发送通知，可以传递发送通知的对象（object）以及一些额外的信息（userInfo）</li>
 </ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">post</span><span class="params">(name aName: NSNotification.Name, object anObject: Any?, userInfo aUserInfo: [AnyHashable : Any]? = <span class="literal">nil</span>)</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">post</span><span class="params">(name aName: NSNotification.Name, object anObject: <span class="keyword">Any</span>?, userInfo aUserInfo: [AnyHashable : <span class="keyword">Any</span>]? = <span class="literal">nil</span>)</span></span></span><br></pre></td></tr></table></figure>
+
+
 <ol start="5">
 <li>移除注册的通知</li>
 </ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">removeObserver</span><span class="params">(<span class="number">_</span> observer: Any, name aName: NSNotification.Name?, object anObject: Any?)</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">removeObserver</span><span class="params">(<span class="number">_</span> observer: <span class="keyword">Any</span>, name aName: NSNotification.Name?, object anObject: <span class="keyword">Any</span>?)</span></span></span><br></pre></td></tr></table></figure>
+
 <p>当然 NotificationCenter 也提供了一种更加便利基于 block 的方式注册监听通知，其将 2，3 两个步骤整合为 1 个步骤。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">addObserver</span><span class="params">(forName name: NSNotification.Name?, object obj: Any?, queue: OperationQueue?, using block: @escaping <span class="params">(Notification)</span></span></span> -&gt; <span class="type">Void</span>) -&gt; <span class="type">NSObjectProtocol</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">addObserver</span><span class="params">(forName name: NSNotification.Name?, object obj: <span class="keyword">Any</span>?, queue: OperationQueue?, using block: @escaping <span class="params">(Notification)</span></span></span> -&gt; <span class="type">Void</span>) -&gt; <span class="type">NSObjectProtocol</span></span><br></pre></td></tr></table></figure>
+
 <p>整体流程很清晰，简单易用，但是却有一个严重的缺点 —— 弱类型。我们接收到的是一个 <code>NSNotification</code> 对象。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">NSNotification</span> : <span class="title">NSObject</span>, <span class="title">NSCopying</span>, <span class="title">NSCoding</span> </span>&#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> name: <span class="type">NSNotification</span>.<span class="type">Name</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> object: <span class="type">Any</span>? &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> userInfo: [<span class="type">AnyHashable</span> : <span class="type">Any</span>]? &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">NSNotification</span> : <span class="title">NSObject</span>, <span class="title">NSCopying</span>, <span class="title">NSCoding</span> </span>&#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> name: <span class="type">NSNotification</span>.<span class="type">Name</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> object: <span class="type">Any?</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> userInfo: [<span class="type">AnyHashable</span> : <span class="type">Any</span>]? &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>假设我们需要传递一个关注状态改变的信息，那么需要包含关注更改后的状态以及被关注者的 ID。那么我们需要从 userInfo 中取出所需要的值：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> following = notification.userInfo?[<span class="string">"FollowingKey"</span>] <span class="keyword">as</span>! <span class="type">NSNumber</span></span><br><span class="line"><span class="keyword">let</span> userID = notification.userInfo?[<span class="string">"UserIDKey"</span>] <span class="keyword">as</span>! <span class="type">NSNumber</span>;</span><br></pre></td></tr></table></figure>
+
 <p>也就是说接收通知的一方一般需要要查看文档才知道怎样从 userInfo 取值，取的值的类型又是什么。这对于使用是极为不方便的。</p>
 <h3 id="SwiftNotificationCenter"><a href="#SwiftNotificationCenter" class="headerlink" title="SwiftNotificationCenter"></a>SwiftNotificationCenter</h3><p><a href="https://github.com/100mango/SwiftNotificationCenter" target="_blank" rel="noopener">SwiftNotificationCenter</a> 是一种面向协议的通知中心方案。使用方式如下：</p>
 <ol>
 <li>定义协议</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">FollowingChanged</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">followingDidChange</span><span class="params">(following: Bool, userID: NSNumber)</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li>基于协议注册通知</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Broadcaster</span>.register(<span class="type">FollowingChanged</span>.<span class="keyword">self</span>, observer: observer)</span><br></pre></td></tr></table></figure>
+
 <ol start="3">
 <li>实现协议方法</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ViewController</span>: <span class="title">FollowingChanged</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">followingDidChange</span><span class="params">(following: Bool, userID: NSNumber)</span></span> &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ol start="4">
 <li>发送通知</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Broadcaster</span>.notify(<span class="type">FollowingChanged</span>.<span class="keyword">self</span>) &#123;</span><br><span class="line">    $<span class="number">0</span>.followingDidChange(following, userID)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ol start="5">
 <li>移除注册的通知</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Broadcaster</span>.unregister(<span class="type">FollowingChanged</span>.<span class="keyword">self</span>, observer: observer)</span><br></pre></td></tr></table></figure>
+
 <p>我们可以看到，其基于协议的方式解决了弱类型的问题，但其也存在着扩展性较差的问题。 </p>
 <p>依然是关注改变的场景，假如随着业务的发展，有的地方需要知道关注后是否为互关的状态，那么又需要增加一个字段来标识。因此我们需要修改协议，增加参数 followingEachOther，且由于它不是必须传递的参数，因此是 optional 类型。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">protocol FollowingChanged &#123;</span><br><span class="line">    func followingDidChange(following: Bool, userID: NSNumber, followingEachOther: NSNumber?)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>如果在该类型通知被广泛应用的场景，那么需要修改的地方就尤其多了。这显然也是难以接受的。</p>
 <h3 id="EventBus"><a href="#EventBus" class="headerlink" title="EventBus"></a>EventBus</h3><p>EventBus 在安卓中被广泛地应用，其流程如下图所示：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/9/23/16d5ec6d7641b705?w=1280&amp;h=479&amp;f=png&amp;s=28898" alt="EventBus-Publish-Subscribe"><br>图片来源：<a href="https://github.com/greenrobot/EventBus" target="_blank" rel="noopener">EventBus</a></p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/9/23/16d5ec6d7641b705?w=1280&h=479&f=png&s=28898" alt="EventBus-Publish-Subscribe"><br>图片来源：<a href="https://github.com/greenrobot/EventBus" target="_blank" rel="noopener">EventBus</a></p>
 <p>使用方式如下：</p>
 <ol>
 <li>定义事件</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">TPFollowingChangedEvent</span>: <span class="title">NSObject</span>, <span class="title">TPEvent</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> following: <span class="type">Bool</span></span><br><span class="line">   		<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> userID: <span class="type">NSNumber</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li>注册事件</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">TPEventBus</span>&lt;<span class="type">TPFollowingChangedEvent</span>&gt;.shared.register(eventType: <span class="type">TPFollowingChangedEvent</span>.<span class="keyword">self</span>, subscriber: <span class="keyword">self</span>, selector: #selector(onEvent(event:object:)))</span><br></pre></td></tr></table></figure>
+
 <ol start="3">
 <li>实现监听事件的方法</li>
 </ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">onEvent</span><span class="params">(event: TPFollowingChangedEvent, object: Any?)</span></span> &#123;</span><br><span class="line">    	<span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">onEvent</span><span class="params">(event: TPFollowingChangedEvent, object: <span class="keyword">Any</span>?)</span></span> &#123;</span><br><span class="line">    	<span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ol start="4">
 <li>发送事件</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">TPEventBus</span>.shared.post(event: event, object: <span class="keyword">self</span>)</span><br></pre></td></tr></table></figure>
+
 <ol start="5">
 <li>移除事件的注册</li>
 </ol>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">TPEventBus</span>&lt;<span class="type">TPFollowingChangedEvent</span>&gt;.shared.unregister(eventType: <span class="type">TPFollowingChangedEvent</span>.<span class="keyword">self</span>, subscriber: <span class="keyword">self</span>)</span><br></pre></td></tr></table></figure>
+
 <p>我们可以看到， EventBus 也是强类型的。</p>
 <p>假如依然是关注的场景，需要知道互关的状态，那么我们只需要在 TPFollowingChangedEvent 中增加 followingEachOther 属性即可。如下所示：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TPFollowingChangedEvent</span>: <span class="title">NSObject</span>, <span class="title">TPEvent</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> following: <span class="type">Bool</span></span><br><span class="line">   		<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> userID: <span class="type">NSNumber</span></span><br><span class="line">    	<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> followingEachOther: <span class="type">NSNumber</span>?</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TPFollowingChangedEvent</span>: <span class="title">NSObject</span>, <span class="title">TPEvent</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> following: <span class="type">Bool</span></span><br><span class="line">   		<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> userID: <span class="type">NSNumber</span></span><br><span class="line">    	<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> followingEachOther: <span class="type">NSNumber?</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>因此使用 EventBus 实现了以下需求：</p>
 <ul>
 <li>强类型</li>
@@ -1187,151 +678,76 @@
 </ul>
 <p>EventBus 同 NotificationCenter 都是基于 target-action 的方案，但是我们不难将其扩展为支持 block 监听的方式，并且同样让它也能够自动移除事件的注册。类似于如下的使用方式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TPEventBus&lt;TPFollowingChangedEvent&gt;.shared.subscribe(eventType: TPFollowingChangedEvent.self).forObject(self).onQueue(OperationQueue.main).onEvent &#123; (event, object) in</span><br><span class="line">     // do something</span><br><span class="line">&#125;.disposed(by: self.tp_eventTokenBag)</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>这里我实现了一个小巧但比较全面的 EventBus 供参考：<a href="https://github.com/wanhmr/TPEventBus" target="_blank" rel="noopener">TPEventBus</a>。</p>
 </blockquote>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>我们可以看到，一对多场景中观察者模式的应用流程都大同小异，但是如何更好用确是值得深思的。当然以上也只是我在一些使用场景上的思考，肯定会欠缺考虑，欢迎拍砖😊。</p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/02/2019-09-02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/09/02/2019-09-02/" class="post-title-link" itemprop="http://yoursite.com/index.html">2019-09-02</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/02/2019-09-02/" class="post-title-link" itemprop="url">2019-09-02</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">Posted on</span>
               
 
               <time title="Created: 2019-09-02 22:13:40 / Modified: 22:26:00" itemprop="dateCreated datePublished" datetime="2019-09-02T22:13:40+08:00">2019-09-02</time>
-            
-
-            
-              
-
-              
-            
-          </span>
+            </span>
 
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/02/2019-09-02/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/09/02/2019-09-02/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2019/09/02/2019-09-02/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/02/2019-09-02/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1339,12 +755,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h3 id="携程"><a href="#携程" class="headerlink" title="携程"></a>携程</h3><p>最近办去日本的签证，由于是个人游，白本，社会人，一路下来也不容易。</p>
+          <h3 id="携程"><a href="#携程" class="headerlink" title="携程"></a>携程</h3><p>最近办去日本的签证，由于是个人游，白本，社会人，一路下来也不容易。</p>
 <p>首先由于在携程订了机票，就想在携程办签证，后面发现携程要的材料无比之多，遂放弃携程去了飞猪的中青旅办理免机酒套餐。不料资料交上去后，中青旅却不给我办，没有任何理由。</p>
 <p>于是我又转头回携程，携程说他们自身不办理免机酒，免机酒是外包给其他机构办理。遂又在携程订了酒店。</p>
 <p>这些都还好，携程有一点比较奇葩，需要一份担保书。但是谁愿意为你担保呢？于是我委托我爸做担保人，把担保书碾转两千公里快递给我。</p>
@@ -1354,146 +765,70 @@
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>这周六就要去霓虹国了，准备了近两个月，有点小期待。</p>
 <h3 id="最最后"><a href="#最最后" class="headerlink" title="最最后"></a>最最后</h3><p>为啥我这么话痨呢？呢？？呢？？？</p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/26/2019-08-26/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/26/2019-08-26/" class="post-title-link" itemprop="http://yoursite.com/index.html">2019-08-26</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/26/2019-08-26/" class="post-title-link" itemprop="url">2019-08-26</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">Posted on</span>
               
 
               <time title="Created: 2019-08-26 07:48:52 / Modified: 08:35:15" itemprop="dateCreated datePublished" datetime="2019-08-26T07:48:52+08:00">2019-08-26</time>
-            
-
-            
-              
-
-              
-            
-          </span>
+            </span>
 
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/08/26/2019-08-26/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/08/26/2019-08-26/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2019/08/26/2019-08-26/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/26/2019-08-26/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1501,12 +836,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h3 id="失望"><a href="#失望" class="headerlink" title="失望"></a>失望</h3><p>上周无意发现 Apple 的 App Store 上架了一个盗版应用，其名字图标都与国内被下架的一款热门应用相似。不仅如此，其甚至拥有着 5k 多次的评价，综合评分高达 4.8。但是奇怪的是，显示在应用详情页的评论却说这是一个赌博软件。再仔细一看详情页的介绍，却发现其分类是在工具类，应用截图及简介也说明其是一款与跑步相关的工具应用。于是我查看了一下大家的评分详情，排在最上面的无一例外都是投诉其是赌博软件，投诉自己误认为是其另一款软件而被欺骗的低分评价，而排在后面的均是把软件伪装成是被下架热门软件的高分评价。毫无疑问，这些高分评价都是被刷的。当我下载这个应用后，我不知道怎么去描绘我所见，只能用触目惊心来形容，满屏的花花绿绿，中间那硕大无比闪动的按钮更是带着讽刺。</p>
+          <h3 id="失望"><a href="#失望" class="headerlink" title="失望"></a>失望</h3><p>上周无意发现 Apple 的 App Store 上架了一个盗版应用，其名字图标都与国内被下架的一款热门应用相似。不仅如此，其甚至拥有着 5k 多次的评价，综合评分高达 4.8。但是奇怪的是，显示在应用详情页的评论却说这是一个赌博软件。再仔细一看详情页的介绍，却发现其分类是在工具类，应用截图及简介也说明其是一款与跑步相关的工具应用。于是我查看了一下大家的评分详情，排在最上面的无一例外都是投诉其是赌博软件，投诉自己误认为是其另一款软件而被欺骗的低分评价，而排在后面的均是把软件伪装成是被下架热门软件的高分评价。毫无疑问，这些高分评价都是被刷的。当我下载这个应用后，我不知道怎么去描绘我所见，只能用触目惊心来形容，满屏的花花绿绿，中间那硕大无比闪动的按钮更是带着讽刺。</p>
 <p>于是我想我应该投诉这个应用，我就做了。后面我会发现，在苹果的应用商店投诉一款应用是多么困难的事情，你在应用商店几乎找不到投诉的入口，至少我没有找到。后面我更会发现，投诉一款免费应用更是难上加难。</p>
 <p>我花了将近 10 分钟找资料，然后知道了投诉的入口。找到入口后，却发现对于免费应用苹果不给你反馈的选项，你只能找到应用的开发者反馈问题。这很有意思，如果是普通的反馈应用缺陷，无疑我是可以这样操作，但这里我希望的是应用下架。这样恶劣欺诈行为的开发者会通过我的投诉下架自己的应用？</p>
 <p>而从几年前的资料来看，对于免费应用，一开始苹果是提供了向其反馈投诉的通道的，而目前关闭了。我不知道什么原因苹果要关闭这个通道，但毫无疑问这就是错的，我没有任何怀疑。</p>
@@ -1517,158 +847,76 @@
 <p>让时间去检验吧，让大家去竞争吧。</p>
 <p>服务是被竞争出来的。</p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/2019-08-19/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/19/2019-08-19/" class="post-title-link" itemprop="http://yoursite.com/index.html">2019-08-19</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/19/2019-08-19/" class="post-title-link" itemprop="url">2019-08-19</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               <time title="Created: 2019-08-19 07:18:43" itemprop="dateCreated datePublished" datetime="2019-08-19T07:18:43+08:00">2019-08-19</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
+                <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2019-08-23 23:54:14" itemprop="dateModified" datetime="2019-08-23T23:54:14+08:00">2019-08-23</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/08/19/2019-08-19/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/08/19/2019-08-19/" itemprop="commentCount"></span>
-                </a>
               </span>
-            
-          
 
           
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2019/08/19/2019-08-19/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/19/2019-08-19/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1676,12 +924,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h3 id="o-╯□╰-o"><a href="#o-╯□╰-o" class="headerlink" title="o(╯□╰)o"></a>o(╯□╰)o</h3><p>让我来回顾下昨天做了些什么。</p>
+          <h3 id="o-╯□╰-o"><a href="#o-╯□╰-o" class="headerlink" title="o(╯□╰)o"></a>o(╯□╰)o</h3><p>让我来回顾下昨天做了些什么。</p>
 <p>早上 10 点起床，去吃了庆丰包子的早餐，2 个窝窝头，1 碗绿豆粥。</p>
 <p>然后散步回家，本来计划是先背单词，最终是看了闲书。</p>
 <p>到了 12 点 30 分，却是一点也不饿，没有食欲，毕竟是夏天。于是我就听了会 Podcast 睡了。本来我是不想听的，因为没有特别喜欢的节目，但是又不想睡，眼睛却撑不住。</p>
@@ -1694,146 +937,70 @@
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>一鼓作气，再而衰，三而竭。</p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>美好的一天开始了。</p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/12/2019-08-12/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/12/2019-08-12/" class="post-title-link" itemprop="http://yoursite.com/index.html">2019-08-12</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/12/2019-08-12/" class="post-title-link" itemprop="url">2019-08-12</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">Posted on</span>
               
 
               <time title="Created: 2019-08-12 07:04:26 / Modified: 07:45:13" itemprop="dateCreated datePublished" datetime="2019-08-12T07:04:26+08:00">2019-08-12</time>
-            
-
-            
-              
-
-              
-            
-          </span>
+            </span>
 
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/08/12/2019-08-12/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/08/12/2019-08-12/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2019/08/12/2019-08-12/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/12/2019-08-12/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -1841,169 +1008,82 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h3 id="台风——利奇马"><a href="#台风——利奇马" class="headerlink" title="台风——利奇马"></a>台风——利奇马</h3><p>近来北京的天气凉爽，温度适宜，连着下了不少的雨。</p>
+          <h3 id="台风——利奇马"><a href="#台风——利奇马" class="headerlink" title="台风——利奇马"></a>台风——利奇马</h3><p>近来北京的天气凉爽，温度适宜，连着下了不少的雨。</p>
 <p>由于一直没有怎么看新闻，昨天才知道原来是<a href="http://e.weather.com.cn/mtqzt/3225013.shtml" target="_blank" rel="noopener">台风“利奇马”</a>登陆内地，听说又有几十名遇难。想想自己能够在还算是远离天灾人祸的地方居住已经是足够幸运。</p>
 <h3 id="香港"><a href="#香港" class="headerlink" title="香港"></a>香港</h3><p>最近香港由于反送中而成为全球关注的焦点，这件情本身整治敏感，而我其实对政治是持消极态度的。我也没有花费太多的时间去了解它，现在想想其实是不应该的。不过，新闻言论漫天飞，什么才是真相？能够找到关键点、本质是一件值得努力的事情。将来的幸与不幸一定会发生在我们身上。</p>
 <h3 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h3><p>最近看了一本书———《叫魂》，还蛮不错的。讲的是清朝中期发生的“叫魂”事件，一种迷信，或者生存压力造成的恐慌。整本书架构非常出彩，作者竟是个美国人，也许旁观者清（也或许在资源等方面更有利）。</p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>美好的一天开始了。</p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/2019-08-04/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Tpphha">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Tpphha">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/04/2019-08-04/" class="post-title-link" itemprop="http://yoursite.com/index.html">2019-08-04</a>
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/04/2019-08-04/" class="post-title-link" itemprop="url">2019-08-04</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">Posted on</span>
 
               <time title="Created: 2019-08-04 23:35:17" itemprop="dateCreated datePublished" datetime="2019-08-04T23:35:17+08:00">2019-08-04</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
+                <span class="post-meta-item-text">Edited on</span>
                 <time title="Modified: 2019-08-05 00:24:50" itemprop="dateModified" datetime="2019-08-05T00:24:50+08:00">2019-08-05</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/08/04/2019-08-04/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/08/04/2019-08-04/" itemprop="commentCount"></span>
-                </a>
               </span>
-            
-          
 
           
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2019/08/04/2019-08-04/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/04/2019-08-04/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
@@ -2011,12 +1091,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <h3 id="电视剧"><a href="#电视剧" class="headerlink" title="电视剧"></a>电视剧</h3><p>最近看了 《九州缥缈录》以及《长安十二辰》，毫无疑问后者更好。看了一些评论说是想把《九州缥缈录》与《权力游戏》做对比，但我看了以后，两者根本就不是同一个类型的，也更不是一个质量等级（这里的比较仅针对电视剧，我并未看原著）。缥缈录看似架构恢弘，但实则只是裹着一层巨大的皮囊而已，内里实在太虚了。如果不是刘昊然真的很帅哈哈，我是不推荐看的。</p>
+          <h3 id="电视剧"><a href="#电视剧" class="headerlink" title="电视剧"></a>电视剧</h3><p>最近看了 《九州缥缈录》以及《长安十二辰》，毫无疑问后者更好。看了一些评论说是想把《九州缥缈录》与《权力游戏》做对比，但我看了以后，两者根本就不是同一个类型的，也更不是一个质量等级（这里的比较仅针对电视剧，我并未看原著）。缥缈录看似架构恢弘，但实则只是裹着一层巨大的皮囊而已，内里实在太虚了。如果不是刘昊然真的很帅哈哈，我是不推荐看的。</p>
 <p>《长安十二辰》我虽看的不多，但看起来不假。有些电影、电视剧你一看就会觉得怎会如此之假，宛如把观众当成弱智。</p>
 <h3 id="鸡汤"><a href="#鸡汤" class="headerlink" title="鸡汤"></a>鸡汤</h3><p>开年就说，今年会是重要的一年。但是我绝对想不到，今年会是我如此失控的一年。</p>
 <h3 id="康德"><a href="#康德" class="headerlink" title="康德"></a>康德</h3><blockquote>
@@ -2024,47 +1099,21 @@
 </blockquote>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>一般而言，做点事情总是困难的，等有所积累才会体会到其乐趣。然而很多人终其一生都迈不过这道坎，现在的我就是如此。我要迈过去。</p>
 
-          
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
-  </section>
+  </div>
 
   
   <nav class="pagination">
@@ -2077,145 +1126,102 @@
           
 
         </div>
-        
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
-    
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
-      
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Tpphha</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tpphha</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
           
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">41</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="/mailto:tpphha@gmail.com" title="E-Mail &amp;rarr; mailto:tpphha@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
 
-              
 
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">5</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
 
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="mailto:tpphha@gmail.com" title="E-Mail &rarr; mailto:tpphha@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-
-      
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">  <a href="http://www.miitbeian.gov.cn" rel="noopener" target="_blank">粤ICP备17120911号 </a>&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备17120911号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Tpphha</span>
-
-  
-
-  
 </div>
-
-
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.0</div>
-
-
-
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
-
-
-
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.5.0
+  </div>
 
         
+
+
+
+
 
 
 
@@ -2227,140 +1233,49 @@
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-	
-    
-
-    
   </div>
 
   
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://tpphha.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
   }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
-
-
-
-  
-
-  
-    <script id="dsq-count-scr" src="https://tpphha.disqus.com/count.js" async></script>
-  
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>

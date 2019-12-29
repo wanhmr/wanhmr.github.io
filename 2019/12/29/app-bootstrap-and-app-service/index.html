@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Tpphha" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="应用启动随着应用各种接入第三方 SDK 与自身服务的增多，启动流程也越来复杂，难以管理与监控。因此会有这些问题：  服务的列表，我们不知道有哪些服务 服务的依赖问题，有些服务会依赖另一个前置服务 服务的异步执行，为了启动的性能优化 服务的条件执行，有时候服务的启动需要符合一些条件 服务的启动耗时 ，我们不知道启动这个服务的启动耗时  我们应该如何管理启动流程？将启动过程看做多个任务的执行过程。通过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="应用启动与应用服务">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;29&#x2F;app-bootstrap-and-app-service&#x2F;index.html">
+<meta property="og:site_name" content="Tpphha">
+<meta property="og:description" content="应用启动随着应用各种接入第三方 SDK 与自身服务的增多，启动流程也越来复杂，难以管理与监控。因此会有这些问题：  服务的列表，我们不知道有哪些服务 服务的依赖问题，有些服务会依赖另一个前置服务 服务的异步执行，为了启动的性能优化 服务的条件执行，有时候服务的启动需要符合一些条件 服务的启动耗时 ，我们不知道启动这个服务的启动耗时  我们应该如何管理启动流程？将启动过程看做多个任务的执行过程。通过">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-29T02:37:36.391Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2019/12/29/app-bootstrap-and-app-service/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>应用启动与应用服务 | Tpphha</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117510171-1"></script>
+    <script>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-117510171-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tpphha</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/29/app-bootstrap-and-app-service/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tpphha">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tpphha">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          应用启动与应用服务
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-29 10:35:34 / Modified: 10:37:36" itemprop="dateCreated datePublished" datetime="2019-12-29T10:35:34+08:00">2019-12-29</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2019/12/29/app-bootstrap-and-app-service/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/29/app-bootstrap-and-app-service/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="应用启动"><a href="#应用启动" class="headerlink" title="应用启动"></a>应用启动</h3><p>随着应用各种接入第三方 SDK 与自身服务的增多，启动流程也越来复杂，难以管理与监控。因此会有这些问题：</p>
+<ul>
+<li>服务的列表，我们不知道有哪些服务</li>
+<li>服务的依赖问题，有些服务会依赖另一个前置服务</li>
+<li>服务的异步执行，为了启动的性能优化</li>
+<li>服务的条件执行，有时候服务的启动需要符合一些条件</li>
+<li>服务的启动耗时 ，我们不知道启动这个服务的启动耗时</li>
+</ul>
+<p>我们应该如何管理启动流程？将启动过程看做多个任务的执行过程。通过对启动任务的管理达到管理启动流程的目的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">@interface MPIBootTask : NSObject</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 启动任务的名字。</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, copy, readonly) NSString *name;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 启动任务需要在哪个阶段执行。</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, assign, readonly) MPIBootPhase bootPhase;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 启动任务执行的优先级，优先级越高的越早执行。</span><br><span class="line"> 注意：优先级只有当 task 的 bootPhase 相同时才有意义。</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, assign, readonly) NSInteger priority;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 是否能够异步执行。</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, assign, readonly) BOOL asynchronous;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> *  如果asynchronous为YES，可以指定priority设置异步启动服务的线程优先级。取值为dispatch_get_global_queue的优先级取值。</span><br><span class="line"> *      DISPATCH_QUEUE_PRIORITY_HIGH</span><br><span class="line"> *      DISPATCH_QUEUE_PRIORITY_DEFAULT</span><br><span class="line"> *      DISPATCH_QUEUE_PRIORITY_LOW</span><br><span class="line"> *      DISPATCH_QUEUE_PRIORITY_BACKGROUND</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, assign, readonly) long dispatchQueuePriority;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 是否执行过。</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, assign, readonly, getter=isExecuted) BOOL executed;</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithName:(NSString *)name</span><br><span class="line">                   bootPhase:(MPIBootPhase)bootPhase</span><br><span class="line">                    priority:(NSInteger)priority</span><br><span class="line">                asynchronous:(BOOL)asynchronous</span><br><span class="line">       dispatchQueuePriority:(long)dispatchQueuePriority;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 是否能够执行 task。</span><br><span class="line"> */</span><br><span class="line">- (BOOL)canExecute;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 执行 task。</span><br><span class="line"> */</span><br><span class="line">- (void)execute;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 需要执行的内容。</span><br><span class="line"> */</span><br><span class="line">- (void)main;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@interface MPIBootLoader : NSObject</span><br><span class="line"></span><br><span class="line">- (void)appendTask:(MPIBootTask *)task;</span><br><span class="line"></span><br><span class="line">- (void)appendTasks:(NSArray&lt;MPIBootTask *&gt; *)tasks;</span><br><span class="line"></span><br><span class="line">- (void)executeTasksWithBootPhase:(MPIBootPhase)bootPhase;</span><br><span class="line"></span><br><span class="line">- (void)executeAllTasks;</span><br><span class="line"></span><br><span class="line">- (nullable MPIBootTask *)taskForName:(NSString *)name;</span><br><span class="line"></span><br><span class="line">- (void)executeTaskWithName:(NSString *)name;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p>通过 <code>MPIBootLoader</code> 持有及管理 <code>Task</code> ，继而通过 <code>Task</code> 来定义执行阶段、优先级、是否异步执行等。值得注意的是，每个 <code>Task</code> 只会被执行一次。</p>
+<h3 id="应用服务"><a href="#应用服务" class="headerlink" title="应用服务"></a>应用服务</h3><p>这里先说明一个概念问题，<code>Task</code> != <code>Service</code>。 <code>Task</code> 定义的是时机，通过 <code>Task</code>  来启动 <code>Service</code> 。 <code>Service</code> 是可以在整个应用生命周期都存在（当然也可以中途被销毁），但是 <code>Task</code> 不会有副作用，执行过后就代表已经完成和结束。</p>
+<p>举一个以前的错误例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">@implementation MPIBootTestTask</span><br><span class="line"></span><br><span class="line">- (void)dealloc &#123;</span><br><span class="line">    [[NSNotificationCenter defaultCenter] removeObserver:self];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)main &#123;</span><br><span class="line">    [Foo start];</span><br><span class="line">    </span><br><span class="line">    [[NSNotificationCenter defaultCenter] addObserver:self</span><br><span class="line">                                             selector:@selector(didReceiveNotification:)</span><br><span class="line">                                                 name:MPITestNotification</span><br><span class="line">                                               object:nil];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#pragma mark - Notification</span><br><span class="line"></span><br><span class="line">- (void)didReceiveNotification:(NSNotification *)notification &#123;</span><br><span class="line">    [Foo update];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p>这个例子中，我们在 <code>Task</code> 中监听了通知，等于执行完 <code>Task</code> 后会产生副作用，并且假如以后需要移出通知，那就需要为 <code>Task</code> 增加移出通知的方法，这就违背了 <code>Task</code> 的职责。</p>
+<p>因此我们引申出 <code>Service</code> 的概念，通过 <code>Service</code> 来追踪应用状态的改变。下面是 <code>Service</code> 的头文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">typedef NSString *MPIServiceName;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * \code  MPIMicroService 代表一个服务。</span><br><span class="line"> */</span><br><span class="line">@protocol MPIService &lt;NSObject&gt;</span><br><span class="line"></span><br><span class="line">@required</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 启动一个服务。框架在完成初始化操作后，会调用该方法。</span><br><span class="line"> *</span><br><span class="line"> * 如果一个服务要启动一个应用，必须在该法被调用之后，才能启动其它的应用。</span><br><span class="line"> */</span><br><span class="line">- (void)start;</span><br><span class="line"></span><br><span class="line">@optional</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> *  服务已经完成创建。</span><br><span class="line"> */</span><br><span class="line">- (void)didCreate;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> *  服务即将释放。</span><br><span class="line"> */</span><br><span class="line">- (void)willDestroy;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p>当然 <code>Service</code> 的作用不止于此，我们也可以通过 <code>Service</code> 做模块化处理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@protocol DemoService &lt;MPIService&gt;</span><br><span class="line"></span><br><span class="line">- (void)doTask;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">id&lt;DemoService&gt; service = MPIApplicationGetServiceByName(@&quot;DemoService&quot;);</span><br><span class="line">[service doTask];</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过 <code>Task</code> 管理及监控启动流程，使用 <code>Service</code> 追踪应用状态改变和模块化处理。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="https://help.aliyun.com/document_detail/51741.html?spm=a2c4g.11186623.4.6.1a7d3773NnHFhU" target="_blank" rel="noopener">mPaaS 框架介绍</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/12/18/2019-12-18/" rel="next" title="2019-12-18">
+                  <i class="fa fa-chevron-left"></i> 2019-12-18
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用启动"><span class="nav-number">1.</span> <span class="nav-text">应用启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用服务"><span class="nav-number">2.</span> <span class="nav-text">应用服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tpphha</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="/mailto:tpphha@gmail.com" title="E-Mail &amp;rarr; mailto:tpphha@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备17120911号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tpphha</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://tpphha.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "http://yoursite.com/2019/12/29/app-bootstrap-and-app-service/",
+            identifier: "2019/12/29/app-bootstrap-and-app-service/",
+            title: "应用启动与应用服务"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tpphha.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    window.addEventListener('load', loadComments, false);
+</script>
+
+</body>
+</html>

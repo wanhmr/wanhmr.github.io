@@ -211,6 +211,109 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/29/app-bootstrap-and-app-service/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tpphha">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tpphha">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/29/app-bootstrap-and-app-service/" class="post-title-link" itemprop="url">应用启动与应用服务</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-29 10:35:34 / Modified: 10:37:36" itemprop="dateCreated datePublished" datetime="2019-12-29T10:35:34+08:00">2019-12-29</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2019/12/29/app-bootstrap-and-app-service/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/29/app-bootstrap-and-app-service/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="应用启动"><a href="#应用启动" class="headerlink" title="应用启动"></a>应用启动</h3><p>随着应用各种接入第三方 SDK 与自身服务的增多，启动流程也越来复杂，难以管理与监控。因此会有这些问题：</p>
+<ul>
+<li>服务的列表，我们不知道有哪些服务</li>
+<li>服务的依赖问题，有些服务会依赖另一个前置服务</li>
+<li>服务的异步执行，为了启动的性能优化</li>
+<li>服务的条件执行，有时候服务的启动需要符合一些条件</li>
+<li>服务的启动耗时 ，我们不知道启动这个服务的启动耗时</li>
+</ul>
+<p>我们应该如何管理启动流程？将启动过程看做多个任务的执行过程。通过对启动任务的管理达到管理启动流程的目的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">@interface MPIBootTask : NSObject</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 启动任务的名字。</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, copy, readonly) NSString *name;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 启动任务需要在哪个阶段执行。</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, assign, readonly) MPIBootPhase bootPhase;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 启动任务执行的优先级，优先级越高的越早执行。</span><br><span class="line"> 注意：优先级只有当 task 的 bootPhase 相同时才有意义。</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, assign, readonly) NSInteger priority;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 是否能够异步执行。</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, assign, readonly) BOOL asynchronous;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> *  如果asynchronous为YES，可以指定priority设置异步启动服务的线程优先级。取值为dispatch_get_global_queue的优先级取值。</span><br><span class="line"> *      DISPATCH_QUEUE_PRIORITY_HIGH</span><br><span class="line"> *      DISPATCH_QUEUE_PRIORITY_DEFAULT</span><br><span class="line"> *      DISPATCH_QUEUE_PRIORITY_LOW</span><br><span class="line"> *      DISPATCH_QUEUE_PRIORITY_BACKGROUND</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, assign, readonly) long dispatchQueuePriority;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 是否执行过。</span><br><span class="line"> */</span><br><span class="line">@property (nonatomic, assign, readonly, getter=isExecuted) BOOL executed;</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithName:(NSString *)name</span><br><span class="line">                   bootPhase:(MPIBootPhase)bootPhase</span><br><span class="line">                    priority:(NSInteger)priority</span><br><span class="line">                asynchronous:(BOOL)asynchronous</span><br><span class="line">       dispatchQueuePriority:(long)dispatchQueuePriority;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 是否能够执行 task。</span><br><span class="line"> */</span><br><span class="line">- (BOOL)canExecute;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 执行 task。</span><br><span class="line"> */</span><br><span class="line">- (void)execute;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 需要执行的内容。</span><br><span class="line"> */</span><br><span class="line">- (void)main;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@interface MPIBootLoader : NSObject</span><br><span class="line"></span><br><span class="line">- (void)appendTask:(MPIBootTask *)task;</span><br><span class="line"></span><br><span class="line">- (void)appendTasks:(NSArray&lt;MPIBootTask *&gt; *)tasks;</span><br><span class="line"></span><br><span class="line">- (void)executeTasksWithBootPhase:(MPIBootPhase)bootPhase;</span><br><span class="line"></span><br><span class="line">- (void)executeAllTasks;</span><br><span class="line"></span><br><span class="line">- (nullable MPIBootTask *)taskForName:(NSString *)name;</span><br><span class="line"></span><br><span class="line">- (void)executeTaskWithName:(NSString *)name;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p>通过 <code>MPIBootLoader</code> 持有及管理 <code>Task</code> ，继而通过 <code>Task</code> 来定义执行阶段、优先级、是否异步执行等。值得注意的是，每个 <code>Task</code> 只会被执行一次。</p>
+<h3 id="应用服务"><a href="#应用服务" class="headerlink" title="应用服务"></a>应用服务</h3><p>这里先说明一个概念问题，<code>Task</code> != <code>Service</code>。 <code>Task</code> 定义的是时机，通过 <code>Task</code>  来启动 <code>Service</code> 。 <code>Service</code> 是可以在整个应用生命周期都存在（当然也可以中途被销毁），但是 <code>Task</code> 不会有副作用，执行过后就代表已经完成和结束。</p>
+<p>举一个以前的错误例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">@implementation MPIBootTestTask</span><br><span class="line"></span><br><span class="line">- (void)dealloc &#123;</span><br><span class="line">    [[NSNotificationCenter defaultCenter] removeObserver:self];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)main &#123;</span><br><span class="line">    [Foo start];</span><br><span class="line">    </span><br><span class="line">    [[NSNotificationCenter defaultCenter] addObserver:self</span><br><span class="line">                                             selector:@selector(didReceiveNotification:)</span><br><span class="line">                                                 name:MPITestNotification</span><br><span class="line">                                               object:nil];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#pragma mark - Notification</span><br><span class="line"></span><br><span class="line">- (void)didReceiveNotification:(NSNotification *)notification &#123;</span><br><span class="line">    [Foo update];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p>这个例子中，我们在 <code>Task</code> 中监听了通知，等于执行完 <code>Task</code> 后会产生副作用，并且假如以后需要移出通知，那就需要为 <code>Task</code> 增加移出通知的方法，这就违背了 <code>Task</code> 的职责。</p>
+<p>因此我们引申出 <code>Service</code> 的概念，通过 <code>Service</code> 来追踪应用状态的改变。下面是 <code>Service</code> 的头文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">typedef NSString *MPIServiceName;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * \code  MPIMicroService 代表一个服务。</span><br><span class="line"> */</span><br><span class="line">@protocol MPIService &lt;NSObject&gt;</span><br><span class="line"></span><br><span class="line">@required</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 启动一个服务。框架在完成初始化操作后，会调用该方法。</span><br><span class="line"> *</span><br><span class="line"> * 如果一个服务要启动一个应用，必须在该法被调用之后，才能启动其它的应用。</span><br><span class="line"> */</span><br><span class="line">- (void)start;</span><br><span class="line"></span><br><span class="line">@optional</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> *  服务已经完成创建。</span><br><span class="line"> */</span><br><span class="line">- (void)didCreate;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> *  服务即将释放。</span><br><span class="line"> */</span><br><span class="line">- (void)willDestroy;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p>当然 <code>Service</code> 的作用不止于此，我们也可以通过 <code>Service</code> 做模块化处理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@protocol DemoService &lt;MPIService&gt;</span><br><span class="line"></span><br><span class="line">- (void)doTask;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">id&lt;DemoService&gt; service = MPIApplicationGetServiceByName(@&quot;DemoService&quot;);</span><br><span class="line">[service doTask];</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过 <code>Task</code> 管理及监控启动流程，使用 <code>Service</code> 追踪应用状态改变和模块化处理。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="https://help.aliyun.com/document_detail/51741.html?spm=a2c4g.11186623.4.6.1a7d3773NnHFhU" target="_blank" rel="noopener">mPaaS 框架介绍</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/2019-12-18/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -240,13 +343,6 @@
             </span>
 
           
-            <span class="post-meta-item" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-users"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="firestore-visitors-count"></span>
-            </span>
   
   <span class="post-meta-item">
     
@@ -328,13 +424,6 @@
             </span>
 
           
-            <span class="post-meta-item" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-users"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="firestore-visitors-count"></span>
-            </span>
   
   <span class="post-meta-item">
     
@@ -409,13 +498,6 @@
             </span>
 
           
-            <span class="post-meta-item" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-users"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="firestore-visitors-count"></span>
-            </span>
   
   <span class="post-meta-item">
     
@@ -498,13 +580,6 @@
             </span>
 
           
-            <span class="post-meta-item" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-users"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="firestore-visitors-count"></span>
-            </span>
   
   <span class="post-meta-item">
     
@@ -581,13 +656,6 @@
             </span>
 
           
-            <span class="post-meta-item" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-users"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="firestore-visitors-count"></span>
-            </span>
   
   <span class="post-meta-item">
     
@@ -664,13 +732,6 @@
             </span>
 
           
-            <span class="post-meta-item" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-users"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="firestore-visitors-count"></span>
-            </span>
   
   <span class="post-meta-item">
     
@@ -749,13 +810,6 @@
             </span>
 
           
-            <span class="post-meta-item" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-users"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="firestore-visitors-count"></span>
-            </span>
   
   <span class="post-meta-item">
     
@@ -836,13 +890,6 @@
             </span>
 
           
-            <span class="post-meta-item" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-users"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="firestore-visitors-count"></span>
-            </span>
   
   <span class="post-meta-item">
     
@@ -932,13 +979,6 @@
               </span>
 
           
-            <span class="post-meta-item" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-users"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="firestore-visitors-count"></span>
-            </span>
   
   <span class="post-meta-item">
     
@@ -968,200 +1008,6 @@
 <p>我不知道我应该怎么去面对接下来的惶恐，忧愁与快乐相互交织，恐惧却一直如影随形。此刻心情、此刻感受、此刻我想、此刻我要，人生一瞬，留住此刻。</p>
 <p>慢下来，静下来，看看远方，此刻，现在，未来还在我们手中。</p>
 <p>如果可以，热爱 something 真让人热泪盈眶。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/23/2019-09-23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Tpphha">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tpphha">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/23/2019-09-23/" class="post-title-link" itemprop="url">iOS 中跨页面状态同步方案比较</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-09-23 23:20:19" itemprop="dateCreated datePublished" datetime="2019-09-23T23:20:19+08:00">2019-09-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-20 23:20:52" itemprop="dateModified" datetime="2019-10-20T23:20:52+08:00">2019-10-20</time>
-              </span>
-
-          
-            <span class="post-meta-item" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-users"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="firestore-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2019/09/23/2019-09-23/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/23/2019-09-23/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>由于团队希望项目能够去 CoreData 化，而以往状态同步都是依赖于 CoreData 的 <code>NSFetchedResultsController</code>。因此去 CoreData 则必须寻找一种替代方案来进行状态同步。</p>
-<h3 id="NotificationCenter"><a href="#NotificationCenter" class="headerlink" title="NotificationCenter"></a>NotificationCenter</h3><p>状态同步实际是一对多的场景，也就是一个事件可以被多个观察者监听到。而苹果的系统框架自带的 NotificationCenter 正是用来适配这种场景，并且其也是被系统框架本身及我们开发者大面积使用的。用法如下：</p>
-<ol>
-<li>定义通知名字，以及需要额外传递信息的 key</li>
-<li>基于 target-action 的方式注册通知</li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">addObserver</span><span class="params">(<span class="number">_</span> observer: <span class="keyword">Any</span>, selector aSelector: Selector, name aName: NSNotification.Name?, object anObject: <span class="keyword">Any</span>?)</span></span></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>实现监听通知的方法</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func onReceivedNotification(note: NSNotification)</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>发送通知，可以传递发送通知的对象（object）以及一些额外的信息（userInfo）</li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">post</span><span class="params">(name aName: NSNotification.Name, object anObject: <span class="keyword">Any</span>?, userInfo aUserInfo: [AnyHashable : <span class="keyword">Any</span>]? = <span class="literal">nil</span>)</span></span></span><br></pre></td></tr></table></figure>
-
-
-<ol start="5">
-<li>移除注册的通知</li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">removeObserver</span><span class="params">(<span class="number">_</span> observer: <span class="keyword">Any</span>, name aName: NSNotification.Name?, object anObject: <span class="keyword">Any</span>?)</span></span></span><br></pre></td></tr></table></figure>
-
-<p>当然 NotificationCenter 也提供了一种更加便利基于 block 的方式注册监听通知，其将 2，3 两个步骤整合为 1 个步骤。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">addObserver</span><span class="params">(forName name: NSNotification.Name?, object obj: <span class="keyword">Any</span>?, queue: OperationQueue?, using block: @escaping <span class="params">(Notification)</span></span></span> -&gt; <span class="type">Void</span>) -&gt; <span class="type">NSObjectProtocol</span></span><br></pre></td></tr></table></figure>
-
-<p>整体流程很清晰，简单易用，但是却有一个严重的缺点 —— 弱类型。我们接收到的是一个 <code>NSNotification</code> 对象。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">NSNotification</span> : <span class="title">NSObject</span>, <span class="title">NSCopying</span>, <span class="title">NSCoding</span> </span>&#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> name: <span class="type">NSNotification</span>.<span class="type">Name</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> object: <span class="type">Any?</span> &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> userInfo: [<span class="type">AnyHashable</span> : <span class="type">Any</span>]? &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>假设我们需要传递一个关注状态改变的信息，那么需要包含关注更改后的状态以及被关注者的 ID。那么我们需要从 userInfo 中取出所需要的值：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> following = notification.userInfo?[<span class="string">"FollowingKey"</span>] <span class="keyword">as</span>! <span class="type">NSNumber</span></span><br><span class="line"><span class="keyword">let</span> userID = notification.userInfo?[<span class="string">"UserIDKey"</span>] <span class="keyword">as</span>! <span class="type">NSNumber</span>;</span><br></pre></td></tr></table></figure>
-
-<p>也就是说接收通知的一方一般需要要查看文档才知道怎样从 userInfo 取值，取的值的类型又是什么。这对于使用是极为不方便的。</p>
-<h3 id="SwiftNotificationCenter"><a href="#SwiftNotificationCenter" class="headerlink" title="SwiftNotificationCenter"></a>SwiftNotificationCenter</h3><p><a href="https://github.com/100mango/SwiftNotificationCenter" target="_blank" rel="noopener">SwiftNotificationCenter</a> 是一种面向协议的通知中心方案。使用方式如下：</p>
-<ol>
-<li>定义协议</li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">FollowingChanged</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">followingDidChange</span><span class="params">(following: Bool, userID: NSNumber)</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>基于协议注册通知</li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Broadcaster</span>.register(<span class="type">FollowingChanged</span>.<span class="keyword">self</span>, observer: observer)</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>实现协议方法</li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ViewController</span>: <span class="title">FollowingChanged</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">followingDidChange</span><span class="params">(following: Bool, userID: NSNumber)</span></span> &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>发送通知</li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Broadcaster</span>.notify(<span class="type">FollowingChanged</span>.<span class="keyword">self</span>) &#123;</span><br><span class="line">    $<span class="number">0</span>.followingDidChange(following, userID)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li>移除注册的通知</li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Broadcaster</span>.unregister(<span class="type">FollowingChanged</span>.<span class="keyword">self</span>, observer: observer)</span><br></pre></td></tr></table></figure>
-
-<p>我们可以看到，其基于协议的方式解决了弱类型的问题，但其也存在着扩展性较差的问题。 </p>
-<p>依然是关注改变的场景，假如随着业务的发展，有的地方需要知道关注后是否为互关的状态，那么又需要增加一个字段来标识。因此我们需要修改协议，增加参数 followingEachOther，且由于它不是必须传递的参数，因此是 optional 类型。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">protocol FollowingChanged &#123;</span><br><span class="line">    func followingDidChange(following: Bool, userID: NSNumber, followingEachOther: NSNumber?)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果在该类型通知被广泛应用的场景，那么需要修改的地方就尤其多了。这显然也是难以接受的。</p>
-<h3 id="EventBus"><a href="#EventBus" class="headerlink" title="EventBus"></a>EventBus</h3><p>EventBus 在安卓中被广泛地应用，其流程如下图所示：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/9/23/16d5ec6d7641b705?w=1280&h=479&f=png&s=28898" alt="EventBus-Publish-Subscribe"><br>图片来源：<a href="https://github.com/greenrobot/EventBus" target="_blank" rel="noopener">EventBus</a></p>
-<p>使用方式如下：</p>
-<ol>
-<li>定义事件</li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">TPFollowingChangedEvent</span>: <span class="title">NSObject</span>, <span class="title">TPEvent</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> following: <span class="type">Bool</span></span><br><span class="line">   		<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> userID: <span class="type">NSNumber</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>注册事件</li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">TPEventBus</span>&lt;<span class="type">TPFollowingChangedEvent</span>&gt;.shared.register(eventType: <span class="type">TPFollowingChangedEvent</span>.<span class="keyword">self</span>, subscriber: <span class="keyword">self</span>, selector: #selector(onEvent(event:object:)))</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>实现监听事件的方法</li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">onEvent</span><span class="params">(event: TPFollowingChangedEvent, object: <span class="keyword">Any</span>?)</span></span> &#123;</span><br><span class="line">    	<span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>发送事件</li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">TPEventBus</span>.shared.post(event: event, object: <span class="keyword">self</span>)</span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li>移除事件的注册</li>
-</ol>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">TPEventBus</span>&lt;<span class="type">TPFollowingChangedEvent</span>&gt;.shared.unregister(eventType: <span class="type">TPFollowingChangedEvent</span>.<span class="keyword">self</span>, subscriber: <span class="keyword">self</span>)</span><br></pre></td></tr></table></figure>
-
-<p>我们可以看到， EventBus 也是强类型的。</p>
-<p>假如依然是关注的场景，需要知道互关的状态，那么我们只需要在 TPFollowingChangedEvent 中增加 followingEachOther 属性即可。如下所示：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TPFollowingChangedEvent</span>: <span class="title">NSObject</span>, <span class="title">TPEvent</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> following: <span class="type">Bool</span></span><br><span class="line">   		<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> userID: <span class="type">NSNumber</span></span><br><span class="line">    	<span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> followingEachOther: <span class="type">NSNumber?</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>因此使用 EventBus 实现了以下需求：</p>
-<ul>
-<li>强类型</li>
-<li>可扩展</li>
-</ul>
-<p>EventBus 同 NotificationCenter 都是基于 target-action 的方案，但是我们不难将其扩展为支持 block 监听的方式，并且同样让它也能够自动移除事件的注册。类似于如下的使用方式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TPEventBus&lt;TPFollowingChangedEvent&gt;.shared.subscribe(eventType: TPFollowingChangedEvent.self).forObject(self).onQueue(OperationQueue.main).onEvent &#123; (event, object) in</span><br><span class="line">     // do something</span><br><span class="line">&#125;.disposed(by: self.tp_eventTokenBag)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这里我实现了一个小巧但比较全面的 EventBus 供参考：<a href="https://github.com/wanhmr/TPEventBus" target="_blank" rel="noopener">TPEventBus</a>。</p>
-</blockquote>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>我们可以看到，一对多场景中观察者模式的应用流程都大同小异，但是如何更好用确是值得深思的。当然以上也只是我在一些使用场景上的思考，肯定会欠缺考虑，欢迎拍砖😊。</p>
 
       
     </div>
@@ -1225,7 +1071,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1286,78 +1132,6 @@
 
 
 
-  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
-  <script>
-    firebase.initializeApp({
-      apiKey: 'AIzaSyBeCl0V60syl8pSAF6Uk3xKHuAa9NArnNQ',
-      projectId: 'self-talk-d8f4a'
-    });
-
-    function getCount(doc, increaseCount) {
-      // IncreaseCount will be false when not in article page
-
-      return doc.get().then(d => {
-        var count = 0;
-        if (!d.exists) { // Has no data, initialize count
-          if (increaseCount) {
-            doc.set({
-              count: 1
-            });
-            count = 1;
-          }
-        } else { // Has data
-          count = d.data().count;
-          if (increaseCount) {
-            // If first view this article
-            doc.set({ // Increase count
-              count: count + 1
-            });
-            count++;
-          }
-        }
-
-        return count;
-      });
-    }
-
-    function appendCountTo(el) {
-      return count => {
-        el.innerText = count;
-      }
-    }
-  </script>
-  <script>
-    (function() {
-      var db = firebase.firestore();
-      var articles = db.collection('articles');
-
-      if (CONFIG.page.isPost) { // Is article page
-        var title = document.querySelector('.post-title').innerText.trim();
-        var doc = articles.doc(title);
-        var increaseCount = true;
-        if (localStorage.getItem(title)) {
-          increaseCount = false;
-        } else {
-          // Mark as visited
-          localStorage.setItem(title, true);
-        }
-        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
-      } else if (CONFIG.page.isHome) { // Is index page
-        var promises = [...document.querySelectorAll('.post-title')].map(element => {
-          var title = element.innerText.trim();
-          var doc = articles.doc(title);
-          return getCount(doc);
-        });
-        Promise.all(promises).then(counts => {
-          var metas = document.querySelectorAll('.firestore-visitors-count');
-          counts.forEach((val, idx) => {
-            appendCountTo(metas[idx])(val);
-          });
-        });
-      }
-    })();
-  </script>
 
 
 
